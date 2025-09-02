@@ -1,15 +1,16 @@
 const assets = {
   background: "assets/BACKGROUND",
-  body: "assets/BODDY",
+  body: "assets/BODY",
   eyes: "assets/EYES",
-  head: "assets/HEADS",
+  head: "assets/HEAD",
   mouth: "assets/MOUTH",
   ear: "assets/EAR",
   outfit: "assets/OUTFIT",
-  offhand: "assets/OFFNHAND",
+  offhand: "assets/OFFHAND",
   face: "assets/FACE"
 };
 
+// Список доступных файлов
 const options = {
   background: [
     "_0001s_0000_Ocean.png", "_0001s_0001_torn-paint.png", "_0001s_0002_BlueSky.png",
@@ -123,7 +124,7 @@ const options = {
 const canvas = document.getElementById("character");
 const ctx = canvas.getContext("2d");
 
-// Заполняем селекты
+// Заполнение селектов
 for (let key in options) {
   const select = document.getElementById(key);
   options[key].forEach(file => {
@@ -140,7 +141,7 @@ for (let key in options) {
   current[key] = options[key][0];
 }
 
-// Слушатели выбора
+// Обновление выбора
 document.querySelectorAll("select").forEach(select => {
   select.addEventListener("change", (e) => {
     current[e.target.id] = e.target.value;
@@ -148,7 +149,7 @@ document.querySelectorAll("select").forEach(select => {
   });
 });
 
-// Отрисовка с гарантированным порядком
+// Рисуем строго по порядку слоёв
 function drawCharacter() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
 
