@@ -36,10 +36,13 @@ let current = {};
 let options = {};
 
 async function loadOptions() {
-  const res = await fetch("assets.json", { cache: "no-store" });
+  // добавляем "кэш-бастер"
+  const cacheBuster = `?v=${Date.now()}`;
+  const res = await fetch(`assets.json${cacheBuster}`, { cache: "no-store" });
   if (!res.ok) throw new Error(`Failed to load assets.json: ${res.status}`);
   return res.json();
 }
+
 
 function fillSelects() {
   for (let key in options) {

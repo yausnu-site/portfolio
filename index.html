@@ -73,6 +73,13 @@
     </div>
   </main>
 
-  <script src="script.js?v=6" defer></script>
+ <script>
+  // динамически подключаем script.js с кэш-бастером
+  const s = document.createElement("script");
+  s.src = "script.js?v=" + Date.now();
+  s.defer = true;
+  document.head.appendChild(s);
+</script>
+
 </body>
 </html>
