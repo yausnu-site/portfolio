@@ -1,66 +1,48 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <title>Мой NFT Конструктор</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Character Builder</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <header>
-    <h1>Моя NFT коллекция</h1>
-    <p>Я — художник, создаю уникальные персонажи. Собери своего героя!</p>
-  </header>
+  <h1>Конструктор персонажа</h1>
 
-  <main>
-    <div class="constructor">
-      <div class="controls">
-        <h2>Выбор элементов</h2>
+  <div class="controls">
+    <label>Фон:
+      <select id="background"></select>
+    </label>
+    <label>Тело:
+      <select id="body"></select>
+    </label>
+    <label>Глаза:
+      <select id="eyes"></select>
+    </label>
+    <label>Голова:
+      <select id="head"></select>
+    </label>
+    <label>Рот / Маска:
+      <select id="mouth"></select>
+    </label>
+    <label>Уши:
+      <select id="ear"></select>
+    </label>
+    <label>Одежда:
+      <select id="outfit"></select>
+    </label>
+    <label>В руках:
+      <select id="offhand"></select>
+    </label>
+    <label>Очки:
+      <select id="glasses"></select>
+    </label>
+  </div>
 
-        <label>Фон:
-          <select id="background"></select>
-        </label>
+  <canvas id="character" width="512" height="512"></canvas>
 
-        <label>Тело:
-          <select id="body"></select>
-        </label>
+  <button id="download">Скачать персонажа</button>
 
-        <label>Глаза:
-          <select id="eyes"></select>
-        </label>
-
-        <label>Волосы:
-          <select id="head"></select>
-        </label>
-
-        <label>Рот:
-          <select id="mouth"></select>
-        </label>
-
-        <label>Уши:
-          <select id="ear"></select>
-        </label>
-
-        <label>Одежда:
-          <select id="outfit"></select>
-        </label>
-
-        <label>В руке:
-          <select id="offhand"></select>
-        </label>
-
-        <label>Аксессуары:
-          <select id="face"></select>
-        </label>
-
-        <button id="download">Скачать персонажа</button>
-      </div>
-
-      <div class="canvas-container">
-        <canvas id="character" width="600" height="600"></canvas>
-      </div>
-    </div>
-  </main>
-
-  <script src="script.js?v=2"></script>
+  <script src="script.js"></script>
 </body>
 </html>
