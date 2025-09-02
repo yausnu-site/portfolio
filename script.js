@@ -119,13 +119,11 @@ const options = {
   ]
 };
 
-// ==== Дальше всё как раньше ====
-
 // Canvas
 const canvas = document.getElementById("character");
 const ctx = canvas.getContext("2d");
 
-// Заполнение селектов
+// Заполняем селекты
 for (let key in options) {
   const select = document.getElementById(key);
   options[key].forEach(file => {
@@ -142,7 +140,7 @@ for (let key in options) {
   current[key] = options[key][0];
 }
 
-// Обновление выбора
+// Слушатели выбора
 document.querySelectorAll("select").forEach(select => {
   select.addEventListener("change", (e) => {
     current[e.target.id] = e.target.value;
@@ -150,15 +148,30 @@ document.querySelectorAll("select").forEach(select => {
   });
 });
 
-// Отрисовка
+// Отрисовка с фиксированным порядком слоёв
 function drawCharacter() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
-  Object.keys(current).forEach(layer => {
-    let img = new Image();
-    img.src = `${assets[layer]}/${current[layer]}`;
-    img.onload = () => {
-      ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-    };
+
+  const drawOrder = [
+    "background",
+    "body",
+    "outfit",
+    "head",
+    "eyes",
+    "mouth",
+    "ear",
+    "offhand",
+    "face"
+  ];
+
+  drawOrder.forEach(layer => {
+    if (current[layer]) {
+      let img = new Image();
+      img.src = `${assets[layer]}/${current[layer]}`;
+      img.onload = () => {
+        ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+      };
+    }
   });
 }
 
