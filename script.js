@@ -7,15 +7,17 @@ const assets = {
   ear: "assets/Ear",
   outfit: "assets/Outfit",
   offhand: "assets/Offhand",
-  glasses: "assets/Face/Glass"
+  glasses: "assets/Face/Glass",
+  mask: "assets/Face/Mask",
+  mouthAttr: "assets/Face/MouthAttributes"
 };
 
 // Список доступных файлов
 const options = {
   background: [
-    "Ocean.png", "TornPaint.png", "BlueSky.png",
+    "Ocean.png", "Torn-paint.png", "BlueSky.png",
     "Night.png", "Blue.png", "NightBlue.png",
-    "SuperNight.png", "Red.png", "NightSunset.png",
+    "SuperNight.png", "Red.png", "Night-Sunset.png",
     "Acid.png", "Pinki.png", "Purple.png",
     "LightGreen.png"
   ],
@@ -27,76 +29,78 @@ const options = {
   eyes: [
     "Angel.png", "GreenMythick.png", "Demon.png",
     "YellowHero.png", "WhiteHero.png", "TurquoiseHero.png",
-    "SadClosedEyes.png", "NormalClosedEyes.png",
-    "ClosedEyesAggressive.png", "TatooPurple.png",
-    "BlueBruises.png", "GreenBruises.png",
+    "Sad-Closed-eyes.png", "Normal-Closed-eyes.png",
+    "Closed-eyes-Aggressive.png", "Tatoo-purple.png",
+    "Blue-bruises.png", "Green-bruises.png",
     "BlueStandEyes.png", "RedStandEyes.png",
     "GreenStandEyes.png"
   ],
   head: [
     "SilverPunk.png", "RedPunk.png", "GreenPunk.png",
-    "LightBrownUndercut.png", "UndercutPurple.png",
-    "UndercutBlond.png", "BundleGinger.png",
-    "BundleBrown.png", "Bundle.png",
-    "GingerSweptBack.png", "BrownSweptBack.png",
-    "SilverSweptBack.png", "ZeroHair.png",
-    "ZeroHairBlond.png", "ZeroHairBlack.png",
+    "Light-brown-undercut.png", "UndercutPurple.png",
+    "Undercut-Blond.png", "Bundle-Ginger.png",
+    "Bundle-BROWN.png", "Bundle.png",
+    "Ginger-SWEPT-BACK.png", "BROWN-SWEPT-BACK.png",
+    "SILVER-SWEPT-BACK.png", "Zero-Hair.png",
+    "Zero-HairBlond.png", "ZeroHairBlack.png",
     "BrownSplash.png", "TurquoiseSplash.png",
     "PinkiPue.png", "TraditionalAngelHunter.png",
     "TraditionalBlond.png", "TraditionalDarkSide.png",
-    "AngelHinter.png", "DarkSide.png", "SemiBoxBlond.png",
+    "AngelHinter.png", "DarkSide.png", "Semi-boxBlond.png",
     "LightMolnia.png", "MolniaPurple.png", "MolniaRed.png"
   ],
   mouth: [
-    "Angry.png", "SneakySmile.png", "OpenMouth.png",
-    "BroadSmile.png", "SeriousMouth.png", "SlightSmile.png",
-    "Teeth.png", "Standard.png",
-    // Mask
-    "BlackMask.png", "RedMask.png", "WhiteMask.png",
-    // MouthAttributes
-    "Asleep.png", "Exhalation.png", "Music.png",
-    "MacDond.png", "Tubule.png", "Sig.png",
-    "ChewingGum.png", "Spikelet.png"
+    "Angry.png", "Sneaky-smile.png", "Open-mouth.png",
+    "Broad-smile.png", "Serious-mouth.png", "Slight-smile.png",
+    "Teeth.png", "Standsrt.png"
   ],
   ear: [
     "SmallHoopRed.png", "SmallHoopAg.png", "SmallHoopGold.png",
-    "CordedEarbudsBlack.png", "CordedEarbudsPink.png", "CordedEarbudsWhite.png",
-    "EarcuffsLasur.png", "EarCuffs.png", "EarCuffsGold.png",
-    "MiniBlack.png", "MiniArgentum.png", "MiniGold.png",
-    "Layer179.png", "HanafudaEar.png", "HimavariEar.png"
+    "CORDED-EARBUDS-Black.png", "CORDED-EARBUDS-Pink.png", "CORDED-EARBUDS-White.png",
+    "EARCUFFS-Lasur.png", "EAR-CUFFS.png", "EAR-CUFFS-GOLD.png",
+    "MiniBlack.png", "MiniArgentum.png", "Minigold.png",
+    "Layer179.png", "Hanafuda-ear.png", "Himavari-ear.png"
   ],
   outfit: [
     "BadlonRed.png", "BadlonWhite.png", "BadlonBlack.png",
-    "RussiaBomber.png", "NeoBomber.png", "CamouflageBomber.png",
-    "DownJacket.png", "DownJacketPurple.png", "DownJacketCamouflage.png",
-    "SuikanBlue.png", "SuikanBlack.png", "SuikanWhite.png",
-    "CoffieMilkBlazer.png", "BlazerBlack.png", "BlazerWhite.png",
-    "GreenBathrobe.png", "BrownBathrobe.png", "OrangeBathrobe.png",
-    "OfficeWorkerBlue.png", "OfficeWorkerWhite.png", "OfficeWorkerBlack.png",
-    "BrownBathrobeV2.png", "BlueBathrobeV2.png", "WhiteBathrobeV2.png",
-    "AngrySweatshirt.png", "KatanaSweatshirt.png", "GoldsSmileSweatshirt.png",
-    "ShirtVestWhiteBlack.png", "ShirtVestBlackWhite.png", "ShirtVestBlueRed.png",
-    "TShirtV2.png", "TShirtV2Black.png", "TShirtV2Yellow.png",
-    "JeanJacket.png", "JeanPilot.png", "JeanJacketGreen.png",
-    "JacketTShirtOne.png", "JacketTShirtBluePink.png", "JacketTShirtPurple.png",
+    "Russia-bomber.png", "NEO-bomber.png", "CamouflageBomber.png",
+    "DownJacket.png", "DownJacketPurple.png", "DownJacket-Camouflage.png",
+    "SUIKAN-Blue.png", "SUIKAN-Black.png", "SUIKAN-White.png",
+    "CoffieMilk-Blazer.png", "Blazer-Black.png", "Blazer-White.png",
+    "Green-bathrobe.png", "Brown-bathrobe.png", "Orange-bathrobe.png",
+    "Office-worker-blue.png", "Office-worker-white.png", "Office-worker-black.png",
+    "Brown-bathrobe-V2.png", "Blue-bathrobe-V2.png", "White-bathrobe-V2.png",
+    "Angry-Sweatshirt.png", "Katana-Sweatshirt.png", "GoldsSmile-Sweatshirt.png",
+    "Shirt-vest-white-black.png", "Shirt-vest-BlackWhite.png", "Shirt-vest-Blue-Red.png",
+    "T-shirtV2.png", "T-shirtV2-Black.png", "T-shirtV2-Yellow.png",
+    "Jean-jacket.png", "JeanPilot.png", "Jean-jacket-Green.png",
+    "Jacket-T-shirt-One.png", "Jacket-T-shirt-blue-Pink.png", "Jacket-T-shirt-purple.png",
     "MonkBlack.png", "MonkWhite.png", "MonkRed.png",
-    "MizuKimono.png", "HikariKimono.png", "HiKimono.png",
-    "BlackQipao.png", "BlueQipao.png", "RedQipao.png",
+    "Mizu-Kimono.png", "Hikari-Kimono.png", "Hi-Kimono.png",
+    "BLACK-QIPAO.png", "BLUE-QIPAO.png", "RED-QIPAO.png",
     "PurpleBlackWindbreaker.png", "OrangeWindbreaker.png", "BlackWindbreaker.png",
-    "ItezieSweatshirtBlack.png", "ItezieSweatshirtRed.png", "ItezieSweatshirtWhite.png",
-    "TShirtBlack.png", "TShirtGreen.png", "TShirtWhite.png",
+    "ItezieSweatshirt-Black.png", "ItezieSweatshirt-Red.png", "ItezieSweatshirt-White.png",
+    "T-shirt-Black.png", "T-shirt-Green.png", "T-shirt-White.png",
     "KimonoBrownStand.png", "KimonoRedStand.png", "KimonoBlue.png"
   ],
   offhand: [
-    "Layer229.png", "MagicWarrior.png", "DiamondsKuri.png",
-    "GoldPink.png", "RedFlag.png", "Argentum.png",
-    "Sun.png", "IteziStand.png", "IteziEmerald.png",
-    "IteziGolds.png", "DeamonSword.png", "Blackwater.png",
-    "BlueSky.png", "FireGolds.png", "KatanaMuzi.png",
-    "KatanaHimawari.png"
+    "Layer229.png", "MagicWarrior.png", "Diamonds-KURI.png",
+    "GoldPink.png", "REDFLAG.png", "ARGENTUM.png",
+    "SUN.png", "ITEZI-STAND.png", "ITEZI-EMERALD.png",
+    "ITEZIGOLDS.png", "DeamonSworld.png", "BLACKWATER.png",
+    "BlueSky.png", "FIREGOLDS.png", "Katana-MUZI.png",
+    "Katana-himawari.png"
   ],
   glasses: [
-    "BlueGlasses.png", "BlackGlasses.png", "RedGlasses.png"
+    "Blackglass.png", "Blueglasses.png", "Redglass.png"
+  ],
+  mask: [
+    "BLACK-MASK.png", "RED-MASK.png", "WHITE-MASK.png"
+  ],
+  mouthAttr: [
+    "Asleep.png", "Chewing-gum.png", "Exhalation.png",
+    "Macdond.png", "Music.png", "Sig.png",
+    "Spikelet.png", "Tubule.png"
   ]
 };
 
@@ -104,22 +108,32 @@ const options = {
 const canvas = document.getElementById("character");
 const ctx = canvas.getContext("2d");
 
-// Заполнение селектов
+// Заполнение селектов (с добавлением "Нет")
 for (let key in options) {
   const select = document.getElementById(key);
   if (!select) continue;
+
+  // Опция "Нет"
+  let noneOpt = document.createElement("option");
+  noneOpt.value = "";
+  noneOpt.textContent = "Нет";
+  select.appendChild(noneOpt);
+
   options[key].forEach(file => {
     let opt = document.createElement("option");
     opt.value = file;
     opt.textContent = file.replace(".png", "");
     select.appendChild(opt);
   });
+
+  // По умолчанию "Нет"
+  select.value = "";
 }
 
 // Текущий выбор
 let current = {};
 for (let key in options) {
-  current[key] = options[key][0];
+  current[key] = "";
 }
 
 // Обновление выбора
@@ -141,6 +155,8 @@ function drawCharacter() {
     "head",
     "eyes",
     "mouth",
+    "mask",
+    "mouthAttr",
     "ear",
     "offhand",
     "glasses"
