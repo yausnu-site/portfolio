@@ -32,7 +32,8 @@ header {
   margin: 10px 0;
 }
 
-.controls select, .controls button {
+.controls select,
+.controls button {
   width: 100%;
   margin-top: 5px;
   padding: 8px;
@@ -40,16 +41,70 @@ header {
   border: none;
 }
 
-.controls button {
+/* красная кнопка скачать */
+#download {
   background: #ff4444;
   color: white;
   cursor: pointer;
   margin-top: 20px;
 }
 
+/* фиолетовая кнопка случайного персонажа */
+#randomize {
+  display: block;
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 20px;
+  font-size: 18px;
+  font-weight: bold;
+  color: #fff;
+  background: linear-gradient(135deg, #8e2de2, #4a00e0);
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+#randomize:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+#randomize:active {
+  transform: scale(0.96);
+}
+
+/* анимация "шэйка" */
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20% { transform: translateX(-4px); }
+  40% { transform: translateX(4px); }
+  60% { transform: translateX(-4px); }
+  80% { transform: translateX(4px); }
+}
+
+#randomize.shake {
+  animation: shake 0.4s;
+}
+
+/* контейнер для канваса */
 .canvas-container {
   margin-left: 40px;
   background: #333;
   padding: 10px;
   border-radius: 12px;
+  position: relative;
+}
+
+/* эффект загрузки канваса */
+#character.loading {
+  opacity: 0.5;
+  filter: blur(2px);
+  transition: opacity 0.3s, filter 0.3s;
+}
+
+#character.loaded {
+  opacity: 1;
+  filter: none;
+  transition: opacity 0.3s, filter 0.3s;
 }
