@@ -23,18 +23,20 @@ fetch("assets.json")
   .then(data => {
     options = data;
 
-    // Заполняем селекты
     for (let key in options) {
       const select = document.getElementById(key);
       if (!select) continue;
 
-      // "Нет" — пустое значение
-      const noneOpt = document.createElement("option");
-      noneOpt.value = "";
-      noneOpt.textContent = "Нет";
-      select.appendChild(noneOpt);
+      // "Нет" только для необязательных слоёв
+      if (!["background", "body", "eyes"].includes(key)) {
+        const noneOpt = document.createElement("option");
+        noneOpt.value = "";
+        noneOpt.textContent = "Нет";
+        select.appendChild(noneOpt);
+        current[key] = ""; // пусто по умолчанию
+      }
 
-      // Файлы строго как в assets.json
+      // Добавляем все ассеты
       options[key].forEach(file => {
         const opt = document.createElement("option");
         opt.value = file;
@@ -42,12 +44,16 @@ fetch("assets.json")
         select.appendChild(opt);
       });
 
-      // По умолчанию "Нет" (можно поменять на первое значение для обязательных слоёв)
-      select.value = "";
-      current[key] = "";
+      // Стартовые значения
+      if (["background", "body", "eyes"].includes(key)) {
+        select.value = options[key][0]; // первый элемент
+        current[key] = options[key][0];
+      } else {
+        select.value = "";
+      }
     }
 
-    // Слушатели изменений
+    // Обработчики выбора
     document.querySelectorAll("select").forEach(select => {
       select.addEventListener("change", (e) => {
         current[e.target.id] = e.target.value;
@@ -55,10 +61,11 @@ fetch("assets.json")
       });
     });
 
+    // Первая отрисовка
     drawCharacter();
   });
 
-// Порядок слоёв важен
+// Порядок отрисовки слоёв
 const drawOrder = [
   "background",
   "body",
@@ -83,10 +90,8 @@ function drawCharacter() {
 
     const img = new Image();
     img.src = `${assets[layer]}/${file}`;
-
-    // Диагностика 404/опечаток
     img.onerror = () => {
-      console.error(`❌ Не удалось загрузить: ${assets[layer]}/${file}`);
+      console.error(`❌ Ошибка загрузки: ${assets[layer]}/${file}`);
     };
 
     images.push({ layer, img });
@@ -99,7 +104,6 @@ function drawCharacter() {
     item.img.onload = () => {
       loaded++;
       if (loaded === images.length) {
-        // Рисуем по очереди
         images.forEach(it => ctx.drawImage(it.img, 0, 0, canvas.width, canvas.height));
       }
     };
@@ -112,4 +116,27 @@ document.getElementById("download").addEventListener("click", () => {
   link.download = "character.png";
   link.href = canvas.toDataURL("image/png");
   link.click();
+});
+
+// Случайный персонаж
+document.getElementById("randomize").addEventListener("click", () => {
+  for (let key in options) {
+    const select = document.getElementById(key);
+    if (!select) continue;
+
+    if (["background", "body", "eyes"].includes(key)) {
+      // обязательные: всегда случайный ассет
+      const rand = Math.floor(Math.random() * options[key].length);
+      select.value = options[key][rand];
+      current[key] = select.value;
+    } else {
+      // необязательные: может быть "Нет"
+      const withNone = ["", ...options[key]];
+      const rand = Math.floor(Math.random() * withNone.length);
+      select.value = withNone[rand];
+      current[key] = select.value;
+    }
+  }
+
+  drawCharacter();
 });
