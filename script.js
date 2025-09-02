@@ -1,122 +1,87 @@
 const assets = {
-  background: "assets/BACKGROUND",
-  body: "assets/BODY",
-  eyes: "assets/EYES",
-  head: "assets/HEAD",
-  mouth: "assets/MOUTH",
-  ear: "assets/EAR",
-  outfit: "assets/OUTFIT",
-  offhand: "assets/OFFHAND",
-  face: "assets/FACE"
+  background: "assets/Background",
+  body: "assets/Body",
+  eyes: "assets/Eyes",
+  head: "assets/Head",
+  mouth: "assets/Mouth",
+  ear: "assets/Ear",
+  outfit: "assets/Outfit",
+  offhand: "assets/Offhand",
+  face: "assets/Face"
 };
 
-// Список доступных файлов
+// Список доступных файлов (уже новые имена без префиксов)
 const options = {
   background: [
-    "_0001s_0000_Ocean.png", "_0001s_0001_torn-paint.png", "_0001s_0002_BlueSky.png",
-    "_0001s_0003_Night.png", "_0001s_0004_Blue.png", "_0001s_0005_NightBlue.png",
-    "_0001s_0007_SuperNight.png", "_0001s_0008_Red.png", "_0001s_0009_Night-Sunset.png",
-    "_0001s_0010_Acid.png", "_0001s_0011_Pinki.png", "_0001s_0012_Purple.png",
-    "_0001s_0013_LightGreen.png"
+    "Ocean.png", "Torn-Paint.png", "BlueSky.png", "Night.png", "Blue.png",
+    "NightBlue.png", "SuperNight.png", "Red.png", "Night-Sunset.png",
+    "Acid.png", "Pinki.png", "Purple.png", "LightGreen.png"
   ],
   body: [
-    "_0000s_0000_Angel.png", "_0000s_0001_Devil.png", "_0000s_0002_HumanStand.png",
-    "_0000s_0003_Pink.png", "_0000s_0004_Demon.png", "_0000s_0005_White.png",
-    "_0000s_0006_Nigga.png"
+    "Angel.png", "Devil.png", "HumanStand.png", "Pink.png", "Demon.png",
+    "White.png", "Nigga.png"
   ],
   eyes: [
-    "_0004s_0000_Angel.png", "_0004s_0001_GreenMythick.png", "_0004s_0002_Demon.png",
-    "_0004s_0003_YellowHero.png", "_0004s_0004_WhiteHero.png", "_0004s_0005_turquoiseHero.png",
-    "_0004s_0006_Sad-Closed-eyes.png", "_0004s_0007_Normal-Closed-eyes.png",
-    "_0004s_0008_Closed-eyes-Aggressive.png", "_0004s_0009_Tatoo-purple.png",
-    "_0004s_0010_Blue-bruises.png", "_0004s_0011_Green-bruises.png",
-    "_0004s_0012_BlueStandEyes.png", "_0004s_0013_RedStandEyes.png",
-    "_0004s_0014_GreenStandEyes.png"
+    "Angel.png", "GreenMythick.png", "Demon.png", "YellowHero.png", "WhiteHero.png",
+    "TurquoiseHero.png", "Sad-Closed-Eyes.png", "Normal-Closed-Eyes.png",
+    "Closed-Eyes-Aggressive.png", "Tatoo-Purple.png", "Blue-Bruises.png",
+    "Green-Bruises.png", "BlueStandEyes.png", "RedStandEyes.png", "GreenStandEyes.png"
   ],
   head: [
-    "_0005s_0000_SilverPunk.png", "_0005s_0001_RedPunk.png", "_0005s_0002_GreenPunk.png",
-    "_0005s_0003_Light-brown-undercut.png", "_0005s_0004_UndercutPurple.png",
-    "_0005s_0005_undercut-Blond.png", "_0005s_0006_bundle-Ginger.png",
-    "_0005s_0007_bundle-BROWN.png", "_0005s_0008_bundle.png", "_0005s_0009_Ginger-SWEPT-BACK.png",
-    "_0005s_0010_BROWN-SWEPT-BACK.png", "_0005s_0011_SILVER-SWEPT-BACK.png",
-    "_0005s_0012_Zero-Hair.png", "_0005s_0013_Zero-HairBlond.png",
-    "_0005s_0014_ZeroHairBlack.png", "_0005s_0015_BrownSplash.png",
-    "_0005s_0016_turquoiseSplash.png", "_0005s_0017_PinkiPue.png",
-    "_0005s_0018_TraditionalAngelHunter.png", "_0005s_0019_TraditionalBlond.png",
-    "_0005s_0020_TraditionalDarkSide.png", "_0005s_0021_AngelHinter.png",
-    "_0005s_0022_DarkSide.png", "_0005s_0023_semi-boxBlond.png",
-    "_0005s_0024_LightMolnia.png", "_0005s_0025_MolniaPurple.png",
-    "_0005s_0026_MolniaRed.png"
+    "SilverPunk.png", "RedPunk.png", "GreenPunk.png", "Light-Brown-Undercut.png",
+    "UndercutPurple.png", "Undercut-Blond.png", "Bundle-Ginger.png",
+    "Bundle-Brown.png", "Bundle.png", "Ginger-Swept-Back.png",
+    "Brown-Swept-Back.png", "Silver-Swept-Back.png", "Zero-Hair.png",
+    "Zero-HairBlond.png", "ZeroHairBlack.png", "BrownSplash.png",
+    "TurquoiseSplash.png", "PinkiPue.png", "TraditionalAngelHunter.png",
+    "TraditionalBlond.png", "TraditionalDarkSide.png", "AngelHinter.png",
+    "DarkSide.png", "Semi-BoxBlond.png", "LightMolnia.png", "MolniaPurple.png",
+    "MolniaRed.png"
   ],
   mouth: [
-    "_0000s_0000_Angry.png", "_0000s_0001_Sneaky-smile.png", "_0000s_0002_Open-mouth.png",
-    "_0000s_0003_Broad-smile.png", "_0000s_0004_serious-mouth.png",
-    "_0000s_0005_slight-smile.png", "_0000s_0006_Teeth.png", "_0000s_0007_Standsrt.png"
+    "Angry.png", "Sneaky-Smile.png", "Open-Mouth.png", "Broad-Smile.png",
+    "Serious-Mouth.png", "Slight-Smile.png", "Teeth.png", "Standard.png"
   ],
   ear: [
-    "_0001s_0000_SmallHoopRed.png", "_0001s_0001_SmallHoopAg.png", "_0001s_0002_SmallHoopGold.png",
-    "_0001s_0003_CORDED-EARBUDS-Black.png", "_0001s_0004_CORDED-EARBUDS-Pink.png",
-    "_0001s_0005_CORDED-EARBUDS-White.png", "_0001s_0006_EARCUFFS-Lasur.png",
-    "_0001s_0007_EAR-CUFFS.png", "_0001s_0008_EAR-CUFFS-GOLD.png",
-    "_0001s_0009_MiniBlack.png", "_0001s_0010_MiniArgentum.png",
-    "_0001s_0011_Minigold.png", "_0001s_0012_Layer179.png",
-    "_0001s_0013_Hanafuda-ear.png", "_0001s_0014_Himavari-ear.png"
+    "SmallHoopRed.png", "SmallHoopAg.png", "SmallHoopGold.png",
+    "Corded-Earbuds-Black.png", "Corded-Earbuds-Pink.png", "Corded-Earbuds-White.png",
+    "Earcuffs-Lasur.png", "Ear-Cuffs.png", "Ear-Cuffs-Gold.png",
+    "MiniBlack.png", "MiniArgentum.png", "MiniGold.png", "Layer179.png",
+    "Hanafuda-Ear.png", "Himavari-Ear.png"
   ],
   outfit: [
-    "_0003s_0000_badlonRed.png", "_0003s_0001_badlonWhite.png", "_0003s_0002_badlonBlack.png",
-    "_0003s_0003_Russia-bomber.png", "_0003s_0004_NEO-bomber.png",
-    "_0003s_0005_CamouflageBomber.png", "_0003s_0006_DownJacket.png",
-    "_0003s_0007_DownJacketPurple.png", "_0003s_0008_DownJacket-Camouflage.png",
-    "_0003s_0009_SUIKAN-Blue.png", "_0003s_0010_SUIKAN-Black.png",
-    "_0003s_0011_SUIKAN-White.png", "_0003s_0012_CoffieMilk-Blazer.png",
-    "_0003s_0013_Blazer-Black.png", "_0003s_0014_Blazer-White.png",
-    "_0003s_0015_green-bathrobe.png", "_0003s_0016_brown-bathrobe.png",
-    "_0003s_0017_Orange-bathrobe.png", "_0003s_0018_office-worker-blue.png",
-    "_0003s_0019_office-worker-white.png", "_0003s_0020_office-worker-black.png",
-    "_0003s_0021_Brown-bathrobe-V2.png", "_0003s_0022_blue-bathrobe-V2.png",
-    "_0003s_0023_white-bathrobe-V2.png", "_0003s_0024_Angry-Sweatshirt.png",
-    "_0003s_0025_Katana-Sweatshirt.png", "_0003s_0026_GoldsSmile-Sweatshirt.png",
-    "_0003s_0027_shirt-vest-white-black.png", "_0003s_0028_shirt-vest-BlackWhite.png",
-    "_0003s_0029_shirt-vest-Blue-Red.png", "_0003s_0030_T-shirtV2.png",
-    "_0003s_0031_T-shirtV2-Black.png", "_0003s_0032_T-shirtV2-Yellow.png",
-    "_0003s_0033_Jean-jacket.png", "_0003s_0034_JeanPilot.png",
-    "_0003s_0035_Jean-jacket-Green.png", "_0003s_0036_Jacket-T-shirt-One.png",
-    "_0003s_0037_Jacket-T-shirt-blue-Pink.png", "_0003s_0038_Jacket-T-shirt-purple.png",
-    "_0003s_0039_MonkBlack.png", "_0003s_0040_MonkWhite.png",
-    "_0003s_0041_MonkRed.png", "_0003s_0042_Mizu-Kimono.png",
-    "_0003s_0043_Hikari-Kimono.png", "_0003s_0044_Hi-Kimono.png",
-    "_0003s_0045_BLACK-QIPAO.png", "_0003s_0046_BLUE-QIPAO.png",
-    "_0003s_0047_RED-QIPAO.png", "_0003s_0048_PurpleBlackWindbreaker.png",
-    "_0003s_0049_OrangeWindbreaker.png", "_0003s_0050_BlackWindbreaker.png",
-    "_0003s_0051_ItezieSweatshirt-Black.png", "_0003s_0052_ItezieSweatshirt-Red.png",
-    "_0003s_0053_ItezieSweatshirt-White.png", "_0003s_0054_T-shirt-Black.png",
-    "_0003s_0055_T-shirt-Green.png", "_0003s_0056_T-shirt-White.png",
-    "_0003s_0057_KimonoBrownStand.png", "_0003s_0058_KimonoRedStand.png",
-    "_0003s_0059_KimonoBlue.png"
+    "BadlonRed.png", "BadlonWhite.png", "BadlonBlack.png", "Russia-Bomber.png",
+    "Neo-Bomber.png", "CamouflageBomber.png", "DownJacket.png", "DownJacketPurple.png",
+    "DownJacket-Camouflage.png", "Suikan-Blue.png", "Suikan-Black.png", "Suikan-White.png",
+    "CoffieMilk-Blazer.png", "Blazer-Black.png", "Blazer-White.png", "Green-Bathrobe.png",
+    "Brown-Bathrobe.png", "Orange-Bathrobe.png", "Office-Worker-Blue.png",
+    "Office-Worker-White.png", "Office-Worker-Black.png", "Brown-Bathrobe-V2.png",
+    "Blue-Bathrobe-V2.png", "White-Bathrobe-V2.png", "Angry-Sweatshirt.png",
+    "Katana-Sweatshirt.png", "GoldsSmile-Sweatshirt.png", "Shirt-Vest-White-Black.png",
+    "Shirt-Vest-Black-White.png", "Shirt-Vest-Blue-Red.png", "T-ShirtV2.png",
+    "T-ShirtV2-Black.png", "T-ShirtV2-Yellow.png", "Jean-Jacket.png", "JeanPilot.png",
+    "Jean-Jacket-Green.png", "Jacket-T-Shirt-One.png", "Jacket-T-Shirt-Blue-Pink.png",
+    "Jacket-T-Shirt-Purple.png", "MonkBlack.png", "MonkWhite.png", "MonkRed.png",
+    "Mizu-Kimono.png", "Hikari-Kimono.png", "Hi-Kimono.png", "Black-Qipao.png",
+    "Blue-Qipao.png", "Red-Qipao.png", "PurpleBlackWindbreaker.png",
+    "OrangeWindbreaker.png", "BlackWindbreaker.png", "ItezieSweatshirt-Black.png",
+    "ItezieSweatshirt-Red.png", "ItezieSweatshirt-White.png", "T-Shirt-Black.png",
+    "T-Shirt-Green.png", "T-Shirt-White.png", "KimonoBrownStand.png",
+    "KimonoRedStand.png", "KimonoBlue.png"
   ],
   offhand: [
-    "_0000s_0000_Layer229.png", "_0000s_0001_MagicWarrior.png", "_0000s_0002_Diamonds-KURI.png",
-    "_0000s_0003_GoldPink.png", "_0000s_0004_REDFLAG.png", "_0000s_0005_ARGENTUM.png",
-    "_0000s_0006_SUN.png", "_0000s_0007_ITEZI-STAND.png", "_0000s_0008_ITEZI-EMERALD.png",
-    "_0000s_0009_ITEZIGOLDS.png", "_0000s_0010_DeamonSworld.png", "_0000s_0011_BLACKWATER.png",
-    "_0000s_0012_BlueSky.png", "_0000s_0013_FIREGOLDS.png", "_0000s_0014_katana-MUZI.png",
-    "_0000s_0015_katana-himawari.png"
+    "Layer229.png", "MagicWarrior.png", "Diamonds-Kuri.png", "GoldPink.png", "RedFlag.png",
+    "Argentum.png", "Sun.png", "Itezi-Stand.png", "Itezi-Emerald.png", "IteziGolds.png",
+    "DeamonSword.png", "BlackWater.png", "BlueSky.png", "FireGolds.png", "Katana-Muzi.png",
+    "Katana-Himawari.png"
   ],
   face: [
-    "Glass/_0000s_0000s_0000_BlueGlasses.png",
-    "Glass/_0000s_0000s_0001_BlackGlass.png",
-    "Glass/_0000s_0000s_0002_RedGlass.png",
-    "Mask/BLACK MASK.png",
-    "Mask/RED MASK.png",
-    "Mask/WHITE MASK.png",
-    "MouthAttributes/_0000s_0000s_0000_Asleep.png",
-    "MouthAttributes/_0000s_0000s_0001_exhalation.png",
-    "MouthAttributes/_0000s_0000s_0002_Music.png",
-    "MouthAttributes/_0000s_0000s_0003_MACDOND.png",
-    "MouthAttributes/_0000s_0000s_0004_tubule.png",
-    "MouthAttributes/_0000s_0000s_0005_Sig.png",
-    "MouthAttributes/_0000s_0000s_0006_Chewing-gum.png",
-    "MouthAttributes/_0000s_0000s_0007_Spikelet.png"
+    "Glass/BlueGlasses.png", "Glass/BlackGlass.png", "Glass/RedGlass.png",
+    "Mask/Black-Mask.png", "Mask/Red-Mask.png", "Mask/White-Mask.png",
+    "MouthAttributes/Asleep.png", "MouthAttributes/Exhalation.png",
+    "MouthAttributes/Music.png", "MouthAttributes/Macdond.png",
+    "MouthAttributes/Tubule.png", "MouthAttributes/Sig.png",
+    "MouthAttributes/Chewing-Gum.png", "MouthAttributes/Spikelet.png"
   ]
 };
 
