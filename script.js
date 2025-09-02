@@ -1,27 +1,34 @@
-// Настройки папок с ассетами
+// Пути к папкам с ассетами
 const assets = {
   background: "assets/BACKGROUND",
   body: "assets/BODDY",
   eyes: "assets/EYES",
   head: "assets/HEADS",
+  mouth: "assets/MOUTH",
+  ear: "assets/EAR",
   outfit: "assets/OUTFIT",
-  face: "assets/FACE/Glass" // пример (можно расширить)
+  offhand: "assets/OFFNHAND",
+  face: "assets/FACE"
 };
 
-const canvas = document.getElementById("character");
-const ctx = canvas.getContext("2d");
-
-// Загрузка списка файлов в select (пока вручную, потом можно автоматизировать)
+// Примеры файлов (только чтобы проверить работу)
 const options = {
   background: ["_0001s_0000_Ocean.png", "_0001s_0003_Night.png"],
   body: ["_0000s_0000_Angel.png", "_0000s_0002_HumanStand.png"],
   eyes: ["_0004s_0000_Angel.png", "_0004s_0002_Demon.png"],
   head: ["_0005s_0000_SilverPunk.png", "_0005s_0010_BROWN-SWEPT-BACK.png"],
+  mouth: ["_0000s_0000_Angry.png", "_0000s_0001_Sneaky-smile.png"],
+  ear: ["_0001s_0000_SmallHoopRed.png", "_0001s_0002_SmallHoopGold.png"],
   outfit: ["_0003s_0000_badlonRed.png", "_0003s_0006_DownJacket.png"],
-  face: ["_0000s_0000_BlueGlasses.png", "_0000s_0001_BlackGlass.png"]
+  offhand: ["_0000s_0000_Layer229.png", "_0000s_0001_MagicWarrior.png"],
+  face: ["_0000s_0000s_0000_BlueGlasses.png", "_0000s_0000s_0001_BlackGlass.png"]
 };
 
-// Функция для заполнения селекторов
+// Canvas
+const canvas = document.getElementById("character");
+const ctx = canvas.getContext("2d");
+
+// Заполнение селектов
 for (let key in options) {
   const select = document.getElementById(key);
   options[key].forEach(file => {
@@ -33,16 +40,12 @@ for (let key in options) {
 }
 
 // Текущий выбор
-let current = {
-  background: options.background[0],
-  body: options.body[0],
-  eyes: options.eyes[0],
-  head: options.head[0],
-  outfit: options.outfit[0],
-  face: options.face[0],
-};
+let current = {};
+for (let key in options) {
+  current[key] = options[key][0]; // по умолчанию первый элемент
+}
 
-// Обновление выбора
+// Обновление при выборе
 document.querySelectorAll("select").forEach(select => {
   select.addEventListener("change", (e) => {
     current[e.target.id] = e.target.value;
@@ -50,7 +53,7 @@ document.querySelectorAll("select").forEach(select => {
   });
 });
 
-// Отрисовка персонажа
+// Функция отрисовки
 function drawCharacter() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   Object.keys(current).forEach(layer => {
@@ -62,7 +65,7 @@ function drawCharacter() {
   });
 }
 
-// Кнопка скачивания
+// Кнопка "Скачать"
 document.getElementById("download").addEventListener("click", () => {
   const link = document.createElement("a");
   link.download = "character.png";
