@@ -148,7 +148,7 @@ document.querySelectorAll("select").forEach(select => {
   });
 });
 
-// Отрисовка с фиксированным порядком слоёв
+// Отрисовка с гарантированным порядком
 function drawCharacter() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
 
@@ -164,14 +164,25 @@ function drawCharacter() {
     "face"
   ];
 
+  let images = [];
   drawOrder.forEach(layer => {
     if (current[layer]) {
       let img = new Image();
       img.src = `${assets[layer]}/${current[layer]}`;
-      img.onload = () => {
-        ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-      };
+      images.push({ layer, img });
     }
+  });
+
+  let loaded = 0;
+  images.forEach(item => {
+    item.img.onload = () => {
+      loaded++;
+      if (loaded === images.length) {
+        images.forEach(it => {
+          ctx.drawImage(it.img, 0, 0, canvas.width, canvas.height);
+        });
+      }
+    };
   });
 }
 
