@@ -43,6 +43,22 @@ const rarityLabel = document.getElementById("rarity-label");
 let current = {};
 let options = {};
 
+// 🔹 Веса для выпадения (чем больше число, тем чаще встречается)
+const rarityLevels = {
+  Common: 60,
+  Rare: 25,
+  Epic: 10,
+  Legendary: 5
+};
+
+// 🔹 Баллы для оценки редкости (логика подсчёта итогового персонажа)
+const rarityPoints = {
+  Common: 1,
+  Rare: 2,
+  Epic: 3,
+  Legendary: 4
+};
+
 // Загрузка списка ассетов
 async function loadOptions() {
   const cacheBuster = `?v=${Date.now()}`;
@@ -133,7 +149,7 @@ function drawCharacter() {
   });
 }
 
-// 🎲 Выбор с учётом редкости
+// 🎲 Выбор с учётом редкости (для выпадения)
 function weightedPickWithRarity(category) {
   const items = rarity[category];
   if (!items) return null;
@@ -156,7 +172,7 @@ function weightedPickWithRarity(category) {
   return entries[0].value;
 }
 
-// 📊 Подсчёт редкости персонажа
+// 📊 Подсчёт редкости персонажа (для отображения)
 function calculateCharacterRarity() {
   let totalPoints = 0;
   let count = 0;
@@ -165,7 +181,6 @@ function calculateCharacterRarity() {
     const val = current[key];
     if (!val) continue;
 
-    // если в rarity.js нет ассета → считаем Common
     let rarityName = "Common";
     if (rarity[key] && rarity[key][val]) {
       rarityName = rarity[key][val];
@@ -182,18 +197,6 @@ function calculateCharacterRarity() {
   if (avg < 1.5) return "Common";
   if (avg < 2.5) return "Rare";
   if (avg < 3.5) return "Epic";
-  return "Legendary";
-}
-
-
-  if (count === 0) return "Common";
-
-  const avg = totalScore / count;
-
-  // 📌 Диапазоны (подобраны для баланса)
-  if (avg >= 40) return "Common";
-  if (avg >= 20) return "Rare";
-  if (avg >= 10) return "Epic";
   return "Legendary";
 }
 
