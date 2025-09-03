@@ -158,22 +158,33 @@ function weightedPickWithRarity(category) {
 
 // 📊 Подсчёт редкости персонажа
 function calculateCharacterRarity() {
-  let totalScore = 0;
+  let totalPoints = 0;
   let count = 0;
 
   for (let key in current) {
     const val = current[key];
     if (!val) continue;
 
-    // если в rarity.js нет ассета → считаем его Common
+    // если в rarity.js нет ассета → считаем Common
     let rarityName = "Common";
     if (rarity[key] && rarity[key][val]) {
       rarityName = rarity[key][val];
     }
 
-    totalScore += rarityLevels[rarityName] || 1;
+    totalPoints += rarityPoints[rarityName];
     count++;
   }
+
+  if (count === 0) return "Common"; // голый персонаж точно Common
+
+  const avg = totalPoints / count;
+
+  if (avg < 1.5) return "Common";
+  if (avg < 2.5) return "Rare";
+  if (avg < 3.5) return "Epic";
+  return "Legendary";
+}
+
 
   if (count === 0) return "Common";
 
