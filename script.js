@@ -179,13 +179,43 @@ function calculateCharacterRarity() {
     count++;
   }
 
-  if (!count) return "Common";
+  if (!count) return { name: "Common" };
 
   const avg = total / count;
-  if (avg < 1.5) return "Common";
-  if (avg < 2.5) return "Rare";
-  if (avg < 3.5) return "Epic";
-  return "Legendary";
+  let name = "Common";
+
+  if (avg < 1.5) name = "Common";
+  else if (avg < 2.5) name = "Rare";
+  else if (avg < 3.5) name = "Epic";
+  else name = "Legendary";
+
+  return { name };
+}
+
+// 🔹 Подсчёт шанса выпадения
+function calculateDropChance() {
+  let probability = 1;
+
+  for (let key in current) {
+    const file = current[key];
+    if (!file) continue;
+
+    const items = options[key];
+    if (!items || items.length === 0) continue;
+
+    const rarityName = (rarity[key] && rarity[key][file]) || "Common";
+    const weight = rarityLevels[rarityName] || 1;
+
+    // сумма весов по категории
+    const totalWeight = items.reduce((sum, f) => {
+      const rName = (rarity[key] && rarity[key][f]) || "Common";
+      return sum + (rarityLevels[rName] || 1);
+    }, 0);
+
+    probability *= weight / totalWeight;
+  }
+
+  return (probability * 100).toFixed(2); // процент
 }
 
 // Обновление текста с редкостью
@@ -196,10 +226,13 @@ function updateRarityLabel() {
     Epic: "rarity-epic",
     Legendary: "rarity-legendary"
   };
-  const rarityName = calculateCharacterRarity();
+
+  const { name } = calculateCharacterRarity();
+  const chance = calculateDropChance();
+
   rarityLabel.className = "rarity-text";
-  rarityLabel.classList.add(rarityClassMap[rarityName]);
-  rarityLabel.textContent = `🌟 ${rarityName} персонаж`;
+  rarityLabel.classList.add(rarityClassMap[name]);
+  rarityLabel.textContent = `🌟 ${name} (шанс выпадения ${chance}%)`;
 }
 
 // Скачать персонажа
