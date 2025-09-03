@@ -80,11 +80,39 @@ select {
   background: #2a2a2a;
   color: #f0f0f0;
   font-size: 0.95em;
+  transition: border-color 0.3s, color 0.3s;
 }
 
 select:focus {
   outline: none;
   border-color: #ffcc00;
+}
+
+/* Подсветка опций в списке */
+option.common { color: #999; }
+option.rare { color: dodgerblue; }
+option.epic { color: purple; }
+option.legendary { color: gold; }
+
+/* Подсветка самого селекта по выбранной редкости */
+select.common {
+  border-color: #999;
+  color: #999;
+}
+
+select.rare {
+  border-color: dodgerblue;
+  color: dodgerblue;
+}
+
+select.epic {
+  border-color: purple;
+  color: purple;
+}
+
+select.legendary {
+  border-color: gold;
+  color: gold;
 }
 
 /* Кнопки */
