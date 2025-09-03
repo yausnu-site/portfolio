@@ -14,7 +14,6 @@
   <main>
     <div class="constructor">
       <div class="controls">
-        <!-- кнопка рандома теперь вверху -->
         <button id="randomize" disabled title="Загружаю ассеты…">🎲 Случайный персонаж</button>
 
         <h2>Выбор элементов</h2>
@@ -39,10 +38,6 @@
           <select id="mouth"></select>
         </label>
 
-        <label>Уши:
-          <select id="ear"></select>
-        </label>
-
         <label>Одежда:
           <select id="outfit"></select>
         </label>
@@ -64,6 +59,14 @@
           <select id="mouthAttr"></select>
         </label>
 
+        <label>Наушники:
+          <select id="earbuds"></select>
+        </label>
+
+        <label>Серьги:
+          <select id="earring"></select>
+        </label>
+
         <button id="download">⬇ Скачать персонажа</button>
       </div>
 
@@ -74,7 +77,6 @@
   </main>
 
  <script>
-  // динамически подключаем script.js с кэш-бастером
   const s = document.createElement("script");
   s.src = "script.js?v=" + Date.now();
   s.defer = true;

@@ -4,15 +4,17 @@ const assets = {
   eyes: "assets/Eyes",
   head: "assets/Head",
   mouth: "assets/Mouth",
-  ear: "assets/Ear",
   outfit: "assets/Outfit",
   offhand: "assets/Offhand",
-  glasses: "assets/Face/Glass",
-  mask: "assets/Face/Mask",
-  mouthAttr: "assets/Face/MouthAttributes"
+  glasses: "assets/Glass",
+  mask: "assets/Mask",
+  mouthAttr: "assets/MouthAttributes",
+  earbuds: "assets/Earbuds",
+  earring: "assets/Earring"
 };
 
 const REQUIRED = ["background", "body", "eyes"];
+
 const drawOrder = [
   "background",
   "body",
@@ -22,7 +24,8 @@ const drawOrder = [
   "mouth",
   "mask",
   "mouthAttr",
-  "ear",
+  "earbuds",
+  "earring",
   "offhand",
   "glasses"
 ];
@@ -36,20 +39,17 @@ let current = {};
 let options = {};
 
 async function loadOptions() {
-  // добавляем "кэш-бастер"
   const cacheBuster = `?v=${Date.now()}`;
   const res = await fetch(`assets.json${cacheBuster}`, { cache: "no-store" });
   if (!res.ok) throw new Error(`Failed to load assets.json: ${res.status}`);
   return res.json();
 }
 
-
 function fillSelects() {
   for (let key in options) {
     const select = document.getElementById(key);
     if (!select) continue;
 
-    // "Нет" только для необязательных
     if (!REQUIRED.includes(key)) {
       const noneOpt = document.createElement("option");
       noneOpt.value = "";
@@ -58,7 +58,6 @@ function fillSelects() {
       current[key] = "";
     }
 
-    // Добавляем ассеты
     options[key].forEach(file => {
       const opt = document.createElement("option");
       opt.value = file;
@@ -66,7 +65,6 @@ function fillSelects() {
       select.appendChild(opt);
     });
 
-    // Стартовое значение
     if (REQUIRED.includes(key)) {
       select.value = options[key][0];
       current[key] = options[key][0];
@@ -75,7 +73,6 @@ function fillSelects() {
     }
   }
 
-  // Слушатели
   document.querySelectorAll("select").forEach(select => {
     select.addEventListener("change", (e) => {
       current[e.target.id] = e.target.value;
@@ -85,7 +82,6 @@ function fillSelects() {
 }
 
 function drawCharacter() {
-  // показать "загрузку"
   canvas.classList.add("loading");
   canvas.classList.remove("loaded");
 
@@ -116,8 +112,6 @@ function drawCharacter() {
       loaded++;
       if (loaded === images.length) {
         images.forEach(it => ctx.drawImage(it.img, 0, 0, canvas.width, canvas.height));
-
-        // убрать "загрузку"
         canvas.classList.remove("loading");
         canvas.classList.add("loaded");
       }
@@ -125,7 +119,6 @@ function drawCharacter() {
   });
 }
 
-// Скачать персонажа
 downloadBtn.addEventListener("click", () => {
   const link = document.createElement("a");
   link.download = "character.png";
@@ -133,9 +126,7 @@ downloadBtn.addEventListener("click", () => {
   link.click();
 });
 
-// Случайный персонаж
 randomBtn.addEventListener("click", () => {
-  // анимация кнопки
   randomBtn.classList.add("shake");
   setTimeout(() => randomBtn.classList.remove("shake"), 400);
 
@@ -158,7 +149,6 @@ randomBtn.addEventListener("click", () => {
   drawCharacter();
 });
 
-// Инициализация
 (async () => {
   try {
     options = await loadOptions();

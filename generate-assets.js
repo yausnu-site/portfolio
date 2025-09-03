@@ -1,19 +1,19 @@
 const fs = require("fs");
 const path = require("path");
 
-// соответствие папок и ключей JSON
 const assetsMap = {
   background: "Background",
   body: "Body",
   eyes: "Eyes",
   head: "Head",
   mouth: "Mouth",
-  ear: "Ear",
   outfit: "Outfit",
   offhand: "Offhand",
-  glasses: "Face/Glass",
-  mask: "Face/Mask",
-  mouthAttr: "Face/MouthAttributes"
+  glasses: "Glass",
+  mask: "Mask",
+  mouthAttr: "MouthAttributes",
+  earbuds: "Earbuds",
+  earring: "Earring"
 };
 
 const baseDir = path.join(__dirname, "assets");
@@ -29,12 +29,11 @@ for (let key in assetsMap) {
   }
 
   const files = fs.readdirSync(dirPath)
-    .filter(f => /\.(png|jpg|jpeg)$/i.test(f)); // только картинки
+    .filter(f => /\.(png|jpg|jpeg)$/i.test(f));
 
   result[key] = files;
 }
 
-// Запись JSON
 const outputPath = path.join(__dirname, "assets.json");
 fs.writeFileSync(outputPath, JSON.stringify(result, null, 2), "utf8");
 
