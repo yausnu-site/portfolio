@@ -17,6 +17,7 @@ const REQUIRED = ["background", "body", "eyes"];
 
 const drawOrder = [
   "background",
+  "offhand",      // как ты хотел — сразу после фона
   "body",
   "outfit",
   "head",
@@ -26,7 +27,6 @@ const drawOrder = [
   "mouthAttr",
   "earbuds",
   "earring",
-  "offhand",
   "glasses"
 ];
 
@@ -119,6 +119,19 @@ function drawCharacter() {
   });
 }
 
+// 🎲 Функция для выбора по весам
+function weightedPick(weights) {
+  const entries = Object.entries(weights);
+  const total = entries.reduce((sum, [, w]) => sum + w, 0);
+  let rand = Math.random() * total;
+  for (const [val, weight] of entries) {
+    rand -= weight;
+    if (rand < 0) return val;
+  }
+  return entries[0][0]; // fallback
+}
+
+// Скачать персонажа
 downloadBtn.addEventListener("click", () => {
   const link = document.createElement("a");
   link.download = "character.png";
@@ -126,6 +139,7 @@ downloadBtn.addEventListener("click", () => {
   link.click();
 });
 
+// 🎲 Случайный персонаж
 randomBtn.addEventListener("click", () => {
   randomBtn.classList.add("shake");
   setTimeout(() => randomBtn.classList.remove("shake"), 400);
@@ -139,16 +153,25 @@ randomBtn.addEventListener("click", () => {
       select.value = options[key][rand];
       current[key] = select.value;
     } else {
-      const withNone = ["", ...options[key]];
-      const rand = Math.floor(Math.random() * withNone.length);
-      select.value = withNone[rand];
-      current[key] = select.value;
+      if (window.rarity && rarity[key]) {
+        // используем шансы из rarity.js
+        const pick = weightedPick(rarity[key]);
+        select.value = pick;
+        current[key] = pick;
+      } else {
+        // стандартный рандом
+        const withNone = ["", ...options[key]];
+        const rand = Math.floor(Math.random() * withNone.length);
+        select.value = withNone[rand];
+        current[key] = select.value;
+      }
     }
   }
 
   drawCharacter();
 });
 
+// Инициализация
 (async () => {
   try {
     options = await loadOptions();
