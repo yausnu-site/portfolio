@@ -13,13 +13,13 @@ const assets = {
   earring: "assets/Earring"
 };
 
-// Эти категории обязательны всегда
+// Категории, которые обязательны всегда
 const REQUIRED = ["background", "body", "eyes"];
 
-// Порядок отрисовки слоёв (снизу вверх)
+// Порядок отрисовки слоёв
 const drawOrder = [
   "background",
-  "offhand",     // по твоему пожеланию — сразу после фона
+  "offhand",
   "body",
   "outfit",
   "head",
@@ -39,11 +39,11 @@ const randomBtn = document.getElementById("randomize");
 const downloadBtn = document.getElementById("download");
 const rarityLabel = document.getElementById("rarity-label");
 
-// Текущее состояние выбора
+// Состояние
 let current = {};
 let options = {};
 
-// 🔹 Веса для выпадения (чем больше число, тем чаще встречается)
+// Веса для выпадения
 const rarityLevels = {
   Common: 60,
   Rare: 25,
@@ -51,7 +51,7 @@ const rarityLevels = {
   Legendary: 5
 };
 
-// 🔹 Баллы для оценки редкости (логика подсчёта итогового персонажа)
+// Баллы для подсчёта итоговой редкости
 const rarityPoints = {
   Common: 1,
   Rare: 2,
@@ -59,21 +59,20 @@ const rarityPoints = {
   Legendary: 4
 };
 
-// Загрузка списка ассетов
+// Загрузка ассетов
 async function loadOptions() {
-  const cacheBuster = `?v=${Date.now()}`;
-  const res = await fetch(`assets.json${cacheBuster}`, { cache: "no-store" });
+  const res = await fetch(`assets.json?v=${Date.now()}`, { cache: "no-store" });
   if (!res.ok) throw new Error(`Не удалось загрузить assets.json: ${res.status}`);
   return res.json();
 }
 
-// Заполнение выпадающих списков
+// Заполнение селектов
 function fillSelects() {
   for (let key in options) {
     const select = document.getElementById(key);
     if (!select) continue;
 
-    // Добавляем вариант "Нет" для необязательных
+    // Добавляем "Нет" для необязательных
     if (!REQUIRED.includes(key)) {
       const noneOpt = document.createElement("option");
       noneOpt.value = "";
@@ -82,7 +81,7 @@ function fillSelects() {
       current[key] = "";
     }
 
-    // Добавляем файлы
+    // Файлы
     options[key].forEach(file => {
       const opt = document.createElement("option");
       opt.value = file;
@@ -99,9 +98,9 @@ function fillSelects() {
     }
   }
 
-  // Подписка на изменения
+  // Изменения селектов
   document.querySelectorAll("select").forEach(select => {
-    select.addEventListener("change", (e) => {
+    select.addEventListener("change", e => {
       current[e.target.id] = e.target.value;
       drawCharacter();
     });
@@ -110,10 +109,9 @@ function fillSelects() {
 
 // Отрисовка персонажа
 function drawCharacter() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
   canvas.classList.add("loading");
   canvas.classList.remove("loaded");
-
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
 
   const images = [];
   for (const layer of drawOrder) {
@@ -122,13 +120,11 @@ function drawCharacter() {
 
     const img = new Image();
     img.src = `${assets[layer]}/${file}`;
-    img.onerror = () => {
-      console.error(`❌ Ошибка загрузки: ${assets[layer]}/${file}`);
-    };
-    images.push({ layer, img });
+    img.onerror = () => console.error(`❌ Ошибка загрузки: ${assets[layer]}/${file}`);
+    images.push({ img });
   }
 
-  if (images.length === 0) {
+  if (!images.length) {
     canvas.classList.remove("loading");
     canvas.classList.add("loaded");
     updateRarityLabel();
@@ -149,21 +145,19 @@ function drawCharacter() {
   });
 }
 
-// 🎲 Выбор с учётом редкости (для выпадения)
+// 🎲 Рандом с учётом редкости
 function weightedPickWithRarity(category) {
   const items = rarity[category];
-  if (!items) return null;
+  if (!items) return "";
 
-  const entries = options[category]
-    .filter(file => items[file] !== undefined || file === "")
-    .map(file => {
-      const rarityName = items[file] || "Common"; // если нет в rarity.js → Common
-      return { value: file, weight: rarityLevels[rarityName] || 1 };
-    });
+  const entries = options[category].map(file => {
+    const rarityName = items[file] || "Common"; // если нет в rarity.js → Common
+    return { value: file, weight: rarityLevels[rarityName] || 1 };
+  });
 
-  if (entries.length === 0) return "";
+  if (!entries.length) return "";
 
-  const total = entries.reduce((sum, e) => sum + e.weight, 0);
+  const total = entries.reduce((s, e) => s + e.weight, 0);
   let rand = Math.random() * total;
   for (const e of entries) {
     rand -= e.weight;
@@ -172,35 +166,29 @@ function weightedPickWithRarity(category) {
   return entries[0].value;
 }
 
-// 📊 Подсчёт редкости персонажа (для отображения)
+// 📊 Подсчёт итоговой редкости
 function calculateCharacterRarity() {
-  let totalPoints = 0;
-  let count = 0;
+  let total = 0, count = 0;
 
   for (let key in current) {
     const val = current[key];
     if (!val) continue;
 
-    let rarityName = "Common";
-    if (rarity[key] && rarity[key][val]) {
-      rarityName = rarity[key][val];
-    }
-
-    totalPoints += rarityPoints[rarityName];
+    const rarityName = (rarity[key] && rarity[key][val]) || "Common";
+    total += rarityPoints[rarityName];
     count++;
   }
 
-  if (count === 0) return "Common"; // голый персонаж точно Common
+  if (!count) return "Common";
 
-  const avg = totalPoints / count;
-
+  const avg = total / count;
   if (avg < 1.5) return "Common";
   if (avg < 2.5) return "Rare";
   if (avg < 3.5) return "Epic";
   return "Legendary";
 }
 
-// 🖊️ Обновление надписи с редкостью
+// Обновление текста с редкостью
 function updateRarityLabel() {
   const rarityClassMap = {
     Common: "rarity-common",
@@ -208,11 +196,9 @@ function updateRarityLabel() {
     Epic: "rarity-epic",
     Legendary: "rarity-legendary"
   };
-
   const rarityName = calculateCharacterRarity();
-
-  rarityLabel.className = "rarity-text"; // сброс классов
-  rarityLabel.classList.add(rarityClassMap[rarityName]); // добавить цвет
+  rarityLabel.className = "rarity-text";
+  rarityLabel.classList.add(rarityClassMap[rarityName]);
   rarityLabel.textContent = `🌟 ${rarityName} персонаж`;
 }
 
@@ -238,16 +224,9 @@ randomBtn.addEventListener("click", () => {
       select.value = options[key][rand];
       current[key] = select.value;
     } else {
-      if (window.rarity && rarity[key]) {
-        const pick = weightedPickWithRarity(key);
-        select.value = pick;
-        current[key] = pick;
-      } else {
-        const withNone = ["", ...options[key]];
-        const rand = Math.floor(Math.random() * withNone.length);
-        select.value = withNone[rand];
-        current[key] = select.value;
-      }
+      const pick = weightedPickWithRarity(key);
+      select.value = pick;
+      current[key] = pick;
     }
   }
 
@@ -260,9 +239,7 @@ randomBtn.addEventListener("click", () => {
     options = await loadOptions();
     fillSelects();
     drawCharacter();
-
     randomBtn.disabled = false;
-    randomBtn.title = "";
   } catch (e) {
     console.error(e);
     randomBtn.disabled = true;

@@ -1,95 +1,170 @@
 // rarity.js
-// Система редкости: Common (обычное), Rare (редкое), Epic (эпическое), Legendary (легендарное)
+// Значения: "Common", "Rare", "Epic", "Legendary"
+// Используется скриптом для выпадения и отображения общей редкости.
 
-const rarityLevels = {
-  Common: 60,
-  Rare: 25,
-  Epic: 10,
-  Legendary: 5
-};
-
-// Ассеты и их редкость
 const rarity = {
+  // === Background ===
   background: {
     "Acid.png": "Common",
     "Blue.png": "Common",
-    "BlueSky.png": "Rare",
+    "BlueSky.png": "Common",
     "LightGreen.png": "Common",
     "Night.png": "Rare",
     "NightBlue.png": "Rare",
-    "NightSunset.png": "Epic",
-    "Ocean.png": "Common",
-    "Pinki.png": "Epic",
+    "NightSunset.png": "Rare",
+    "Ocean.png": "Epic",
+    "Pinki.png": "Common",
     "Purple.png": "Rare",
-    "Red.png": "Epic",
-    "SuperNight.png": "Legendary",
+    "Red.png": "Common",
+    "SuperNight.png": "Epic",
     "Torn.png": "Legendary"
   },
+
+  // === Body (базовые — пусть будут Common, чтобы «голый» = Common) ===
   body: {
-    "Angel.png": "Epic",
+    "Angel.png": "Common",
     "Beige.png": "Common",
-    "Black.png": "Rare",
-    "Demon.png": "Epic",
-    "Devil.png": "Legendary",
+    "Black.png": "Common",
+    "Demon.png": "Common",
+    "Devil.png": "Common",
     "Pink.png": "Common",
     "White.png": "Common"
   },
+
+  // === Earbuds ===
+  earbuds: {
+    "Black.png": "Rare",
+    "Red.png": "Rare",
+    "White.png": "Common"
+  },
+
+  // === Earring ===
+  earring: {
+    "EarCuffs_Gold.png": "Rare",
+    "EarCuffs_Lasur.png": "Rare",
+    "EarCuffs_Metal.png": "Common",
+    "Hoop_Gold.png": "Rare",
+    "Hoop_Metal.png": "Common",
+    "Hoop_Red.png": "Rare",
+    "J.ear_Hanafudo.png": "Epic",
+    "J.ear_Himavari.png": "Epic",
+    "J.ear_Kiriko.png": "Epic",
+    "Mini_Argentum.png": "Common",
+    "Mini_Black.png": "Common",
+    "Mini_gold.png": "Rare"
+  },
+
+  // === Eyes ===
   eyes: {
-    "Angel.png": "Epic",
+    "Angel.png": "Rare",
     "Bruises_Blue.png": "Rare",
     "Bruises_Green.png": "Rare",
     "Closed_V1.png": "Common",
     "Closed_V2.png": "Common",
     "Closed_V3.png": "Common",
-    "Demon.png": "Epic",
-    "Hero_Turquoise.png": "Epic",
-    "Hero_White.png": "Epic",
-    "Hero_Yellow.png": "Epic",
-    "Mythick.png": "Legendary",
+    "Demon.png": "Rare",
+    "Hero_Turquoise.png": "Rare",
+    "Hero_White.png": "Rare",
+    "Hero_Yellow.png": "Rare",
+    "Mythick.png": "Epic",
     "Stand_Blue.png": "Common",
     "Stand_Green.png": "Common",
     "Stand_Red.png": "Common",
     "Tatoo_purple.png": "Rare"
   },
+
+  // === Glass (очки) ===
+  glasses: {
+    "Black.png": "Common",
+    "Blue.png": "Rare",
+    "Red.png": "Rare"
+  },
+
+  // === Head (волосы/голова) ===
   head: {
-    "Anime_Purple_.png": "Rare",
+    "Anime_Purple_.png": "Epic",
     "Anime_Red.png": "Rare",
     "Anime_Yellow.png": "Rare",
     "Bald_Black.png": "Common",
     "Bald_Blonde.png": "Common",
     "Bald_Stand.png": "Common",
-    "HairBack_Orange.png": "Common",
+    "HairBack_Orange.png": "Rare",
     "HairBack_Silver.png": "Rare",
     "HairBack_Stand.png": "Common",
-    "HairUp_Blonde.png": "Common",
-    "HairUp_Dark.png": "Common",
-    "HairUp_White.png": "Rare",
+    "HairUp_Blonde.png": "Rare",
+    "HairUp_Dark.png": "Rare",
+    "HairUp_White.png": "Epic",
     "Punk_green.png": "Rare",
     "Punk_red.png": "Rare",
-    "Punk_silver.png": "Rare",
+    "Punk_silver.png": "Epic",
     "Shaggy_Crimson.png": "Rare",
     "Shaggy_Grey.png": "Common",
     "Shaggy_Stand.png": "Common",
     "Sneaf_Orange.png": "Rare",
     "Sneaf_Silver.png": "Rare",
     "Sneaf_Stand.png": "Common",
-    "Tail_Black.png": "Common",
-    "Tail_Blonde.png": "Common",
-    "Tail_Silver.png": "Rare",
-    "Undercut_Blonde.png": "Common",
-    "Undercut_Purple.png": "Rare",
+    "Tail_Black.png": "Rare",
+    "Tail_Blonde.png": "Rare",
+    "Tail_Silver.png": "Epic",
+    "Undercut_Blonde.png": "Rare",
+    "Undercut_Purple.png": "Epic",
     "Undercut_Stand.png": "Common"
   },
+
+  // === Mask (делаю редкими, чтобы без маски выпадало чаще) ===
+  mask: {
+    "Black.png": "Epic",
+    "Red.png": "Epic",
+    "White.png": "Epic"
+    // Пустой вариант ("нет маски") берётся из селекта и считается как Common,
+    // поэтому шанс "без маски" станет значительно выше, чем с маской.
+  },
+
+  // === Mouth ===
   mouth: {
-    "Angry.png": "Common",
+    "Angry.png": "Rare",
     "Open.png": "Common",
-    "Serious.png": "Common",
+    "Serious.png": "Rare",
     "Slight.png": "Common",
     "Smile.png": "Common",
     "Sneaky.png": "Rare",
     "Stand.png": "Common",
-    "Teeth.png": "Rare"
+    "Teeth.png": "Epic"
   },
+
+  // === MouthAttributes ===
+  mouthAttr: {
+    "Asleep.png": "Rare",
+    "Exhalation.png": "Rare",
+    "Gum.png": "Rare",
+    "Macdond.png": "Epic",
+    "Music.png": "Rare",
+    "Sig.png": "Rare",
+    "Spikelet.png": "Rare",
+    "Tubule.png": "Rare"
+  },
+
+  // === Offhand ===
+  offhand: {
+    "Katana_Black.png": "Rare",
+    "Katana_Bluesky.png": "Rare",
+    "Katana_Bluewather.png": "Rare",
+    "Katana_Demon.png": "Epic",
+    "Katana_Goldfire.png": "Legendary",
+    "Katana_Hinokami.png": "Epic",
+    "Krab.png": "Rare",
+    "Staff_Diamond.png": "Legendary",
+    "Staff_Fireball.png": "Epic",
+    "Staff_Goldenpink.png": "Epic",
+    "Staff_Metal.png": "Rare",
+    "Staff_Ruby.png": "Epic",
+    "Staff_Silver.png": "Rare",
+    "Sworld_Emerald.png": "Epic",
+    "Sworld_Golds.png": "Legendary",
+    "Sworld_Stand.png": "Rare"
+  },
+
+  // === Outfit (много Common, немного Rare/Epic/Legendary) ===
   outfit: {
     "Badlon_Brown.png": "Common",
     "Badlon_Red.png": "Common",
@@ -100,9 +175,9 @@ const rarity = {
     "Bathrobe_Green.png": "Common",
     "Bathrobe_Orange.png": "Common",
     "Bathrobe_White_V2.png": "Rare",
-    "Blazer_Black.png": "Epic",
-    "Blazer_Coffiemilk.png": "Epic",
-    "Blazer_White.png": "Epic",
+    "Blazer_Black.png": "Common",
+    "Blazer_Coffiemilk.png": "Rare",
+    "Blazer_White.png": "Common",
     "Bomber_Camouflage.png": "Rare",
     "Bomber_Neon.png": "Epic",
     "Bomber_Sport.png": "Rare",
@@ -111,19 +186,19 @@ const rarity = {
     "DownJacket_Red.png": "Rare",
     "Jacket_Blue.png": "Common",
     "Jacket_Brown.png": "Common",
-    "Jacket_purple.png": "Common",
+    "Jacket_purple.png": "Rare",
     "Jean_Green.png": "Common",
     "Jean_Jacket.png": "Common",
     "Jean_Pilot.png": "Rare",
     "Kimono-Hi.png": "Epic",
-    "Kimono-Hikari.png": "Epic",
+    "Kimono-Hikari.png": "Legendary",
     "Kimono_Blue.png": "Rare",
     "Kimono_Brown.png": "Rare",
     "Kimono_Mizu.png": "Epic",
-    "Kimono_Red.png": "Rare",
-    "Monk_Black.png": "Epic",
-    "Monk_Red.png": "Epic",
-    "Monk_White.png": "Epic",
+    "Kimono_Red.png": "Epic",
+    "Monk_Black.png": "Rare",
+    "Monk_Red.png": "Rare",
+    "Monk_White.png": "Rare",
     "Office_Black.png": "Common",
     "Office_Blue.png": "Common",
     "Office_White.png": "Common",
@@ -136,8 +211,8 @@ const rarity = {
     "Suikan_Black.png": "Rare",
     "Suikan_Blue.png": "Rare",
     "Suikan_White.png": "Rare",
-    "Sweatshirt_Angry.png": "Common",
-    "Sweatshirt_Goldsmile.png": "Common",
+    "Sweatshirt_Angry.png": "Rare",
+    "Sweatshirt_Goldsmile.png": "Epic",
     "Sweatshirt_Itezie_Black.png": "Rare",
     "Sweatshirt_Itezie_Red.png": "Rare",
     "Sweatshirt_Katana.png": "Epic",
@@ -148,77 +223,8 @@ const rarity = {
     "Tshirt_Black.png": "Common",
     "Tshirt_Green.png": "Common",
     "Tshirt_White.png": "Common",
-    "Windbreaker_Black.png": "Rare",
+    "Windbreaker_Black.png": "Common",
     "Windbreaker_Orange.png": "Rare",
     "Windbreaker_Purple.png": "Rare"
-  },
-  offhand: {
-    "": "Common",
-    "Katana_Black.png": "Rare",
-    "Katana_Bluesky.png": "Rare",
-    "Katana_Bluewather.png": "Rare",
-    "Katana_Demon.png": "Epic",
-    "Katana_Goldfire.png": "Epic",
-    "Katana_Hinokami.png": "Legendary",
-    "Krab.png": "Epic",
-    "Staff_Diamond.png": "Epic",
-    "Staff_Fireball.png": "Epic",
-    "Staff_Goldenpink.png": "Epic",
-    "Staff_Metal.png": "Rare",
-    "Staff_Ruby.png": "Epic",
-    "Staff_Silver.png": "Rare",
-    "Sworld_Emerald.png": "Rare",
-    "Sworld_Golds.png": "Epic",
-    "Sworld_Stand.png": "Common"
-  },
-  glasses: {
-    "": "Common",
-    "Black.png": "Rare",
-    "Blue.png": "Rare",
-    "Red.png": "Epic"
-  },
-  mask: {
-    "": "Common",
-    "Black.png": "Rare",
-    "Red.png": "Epic",
-    "White.png": "Legendary"
-  },
-  mouthAttr: {
-    "": "Common",
-    "Asleep.png": "Rare",
-    "Exhalation.png": "Rare",
-    "Gum.png": "Rare",
-    "Macdond.png": "Epic",
-    "Music.png": "Legendary",
-    "Sig.png": "Legendary",
-    "Spikelet.png": "Epic",
-    "Tubule.png": "Rare"
-  },
-  earbuds: {
-    "": "Common",
-    "Black.png": "Rare",
-    "Red.png": "Epic",
-    "White.png": "Rare"
-  },
-  earring: {
-    "": "Common",
-    "EarCuffs_Gold.png": "Epic",
-    "EarCuffs_Lasur.png": "Epic",
-    "EarCuffs_Metal.png": "Rare",
-    "Hoop_Gold.png": "Rare",
-    "Hoop_Metal.png": "Rare",
-    "Hoop_Red.png": "Rare",
-    "J.ear_Hanafudo.png": "Legendary",
-    "J.ear_Himavari.png": "Legendary",
-    "J.ear_Kiriko.png": "Legendary",
-    "Mini_Argentum.png": "Rare",
-    "Mini_Black.png": "Rare",
-    "Mini_gold.png": "Epic"
   }
 };
-
-window.rarityLevels = rarityLevels;
-window.rarity = rarity;
-if (typeof module !== "undefined") {
-  module.exports = { rarityLevels, rarity };
-}
