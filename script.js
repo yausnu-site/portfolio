@@ -198,15 +198,9 @@ function calculateDropChance() {
     probability *= weight / totalWeight;
   }
 
-  const percent = probability * 100;
-
-  // динамическая точность
-  if (percent >= 1) {
-    return percent.toFixed(2); // 2 знака
-  } else {
-    return percent.toFixed(4); // 4 знака
-  }
+  return probability * 100; // возвращаем реальное число в %
 }
+
 
 
 function updateRarityLabel() {
@@ -217,12 +211,12 @@ function updateRarityLabel() {
     Legendary: "rarity-legendary"
   };
 
-  const { name } = calculateCharacterRarity();
-  const chance = calculateDropChance();
+  const rarityName = calculateCharacterRarity();
+  const dropChance = calculateDropChance();
 
-  rarityLabel.className = "rarity-text";
-  rarityLabel.classList.add(rarityClassMap[name]);
-  rarityLabel.textContent = `🌟 ${name} (шанс выпадения ${chance}%)`;
+  rarityLabel.className = "rarity-text"; 
+  rarityLabel.classList.add(rarityClassMap[rarityName]);
+  rarityLabel.textContent = `🌟 ${rarityName} (шанс выпадения ${dropChance}%)`;
 }
 
 downloadBtn.addEventListener("click", () => {
