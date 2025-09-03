@@ -13,10 +13,8 @@ const assets = {
   earring: "assets/Earring"
 };
 
-// Категории, которые обязательны всегда
 const REQUIRED = ["background", "body", "eyes"];
 
-// Порядок отрисовки слоёв
 const drawOrder = [
   "background",
   "offhand",
@@ -32,18 +30,16 @@ const drawOrder = [
   "glasses"
 ];
 
-// Элементы интерфейса
 const canvas = document.getElementById("character");
 const ctx = canvas.getContext("2d");
+const loader = document.getElementById("loader");
 const randomBtn = document.getElementById("randomize");
 const downloadBtn = document.getElementById("download");
 const rarityLabel = document.getElementById("rarity-label");
 
-// Состояние
 let current = {};
 let options = {};
 
-// Веса для выпадения
 const rarityLevels = {
   Common: 60,
   Rare: 25,
@@ -51,7 +47,6 @@ const rarityLevels = {
   Legendary: 5
 };
 
-// Баллы для подсчёта итоговой редкости
 const rarityPoints = {
   Common: 1,
   Rare: 2,
@@ -59,20 +54,17 @@ const rarityPoints = {
   Legendary: 4
 };
 
-// Загрузка ассетов
 async function loadOptions() {
   const res = await fetch(`assets.json?v=${Date.now()}`, { cache: "no-store" });
   if (!res.ok) throw new Error(`Не удалось загрузить assets.json: ${res.status}`);
   return res.json();
 }
 
-// Заполнение селектов
 function fillSelects() {
   for (let key in options) {
     const select = document.getElementById(key);
     if (!select) continue;
 
-    // Добавляем "Нет" для необязательных
     if (!REQUIRED.includes(key)) {
       const noneOpt = document.createElement("option");
       noneOpt.value = "";
@@ -81,7 +73,6 @@ function fillSelects() {
       current[key] = "";
     }
 
-    // Файлы
     options[key].forEach(file => {
       const opt = document.createElement("option");
       opt.value = file;
@@ -89,7 +80,6 @@ function fillSelects() {
       select.appendChild(opt);
     });
 
-    // Стартовые значения
     if (REQUIRED.includes(key)) {
       select.value = options[key][0];
       current[key] = options[key][0];
@@ -98,7 +88,6 @@ function fillSelects() {
     }
   }
 
-  // Изменения селектов
   document.querySelectorAll("select").forEach(select => {
     select.addEventListener("change", e => {
       current[e.target.id] = e.target.value;
@@ -107,11 +96,11 @@ function fillSelects() {
   });
 }
 
-// Отрисовка персонажа
 function drawCharacter() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
-  canvas.classList.add("loading");
-  canvas.classList.remove("loaded");
+
+  // показать лоадер
+  loader.style.display = "block";
 
   const images = [];
   for (const layer of drawOrder) {
@@ -125,8 +114,7 @@ function drawCharacter() {
   }
 
   if (!images.length) {
-    canvas.classList.remove("loading");
-    canvas.classList.add("loaded");
+    loader.style.display = "none";
     updateRarityLabel();
     return;
   }
@@ -137,21 +125,19 @@ function drawCharacter() {
       loaded++;
       if (loaded === images.length) {
         images.forEach(it => ctx.drawImage(it.img, 0, 0, canvas.width, canvas.height));
-        canvas.classList.remove("loading");
-        canvas.classList.add("loaded");
+        loader.style.display = "none";
         updateRarityLabel();
       }
     };
   });
 }
 
-// 🎲 Рандом с учётом редкости
 function weightedPickWithRarity(category) {
   const items = rarity[category];
   if (!items) return "";
 
   const entries = options[category].map(file => {
-    const rarityName = items[file] || "Common"; // если нет в rarity.js → Common
+    const rarityName = items[file] || "Common";
     return { value: file, weight: rarityLevels[rarityName] || 1 };
   });
 
@@ -166,7 +152,6 @@ function weightedPickWithRarity(category) {
   return entries[0].value;
 }
 
-// 📊 Подсчёт итоговой редкости
 function calculateCharacterRarity() {
   let total = 0, count = 0;
 
@@ -192,7 +177,6 @@ function calculateCharacterRarity() {
   return { name };
 }
 
-// 🔹 Подсчёт шанса выпадения
 function calculateDropChance() {
   let probability = 1;
 
@@ -206,7 +190,6 @@ function calculateDropChance() {
     const rarityName = (rarity[key] && rarity[key][file]) || "Common";
     const weight = rarityLevels[rarityName] || 1;
 
-    // сумма весов по категории
     const totalWeight = items.reduce((sum, f) => {
       const rName = (rarity[key] && rarity[key][f]) || "Common";
       return sum + (rarityLevels[rName] || 1);
@@ -215,10 +198,9 @@ function calculateDropChance() {
     probability *= weight / totalWeight;
   }
 
-  return (probability * 100).toFixed(2); // процент
+  return (probability * 100).toFixed(2);
 }
 
-// Обновление текста с редкостью
 function updateRarityLabel() {
   const rarityClassMap = {
     Common: "rarity-common",
@@ -235,7 +217,6 @@ function updateRarityLabel() {
   rarityLabel.textContent = `🌟 ${name} (шанс выпадения ${chance}%)`;
 }
 
-// Скачать персонажа
 downloadBtn.addEventListener("click", () => {
   const link = document.createElement("a");
   link.download = "character.png";
@@ -243,7 +224,6 @@ downloadBtn.addEventListener("click", () => {
   link.click();
 });
 
-// 🎲 Случайный персонаж
 randomBtn.addEventListener("click", () => {
   randomBtn.classList.add("shake");
   setTimeout(() => randomBtn.classList.remove("shake"), 400);
@@ -266,7 +246,6 @@ randomBtn.addEventListener("click", () => {
   drawCharacter();
 });
 
-// 🚀 Инициализация
 (async () => {
   try {
     options = await loadOptions();

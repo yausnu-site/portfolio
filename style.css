@@ -176,3 +176,34 @@ canvas.loaded {
 .rarity-rare { color: dodgerblue; }
 .rarity-epic { color: purple; }
 .rarity-legendary { color: gold; }
+/* ====== LOADER ====== */
+.loader {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  font-family: "Arial", sans-serif;
+  color: #fff;
+  font-size: 1.2rem;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.loader:before {
+  content: "";
+  display: block;
+  width: 40px;
+  height: 40px;
+  margin: 0 auto 10px;
+  border: 4px solid #fff;
+  border-top-color: transparent;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
