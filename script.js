@@ -198,8 +198,16 @@ function calculateDropChance() {
     probability *= weight / totalWeight;
   }
 
-  return (probability * 100).toFixed(2);
+  const percent = probability * 100;
+
+  // динамическая точность
+  if (percent >= 1) {
+    return percent.toFixed(2); // 2 знака
+  } else {
+    return percent.toFixed(4); // 4 знака
+  }
 }
+
 
 function updateRarityLabel() {
   const rarityClassMap = {
