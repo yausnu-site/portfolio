@@ -2,6 +2,7 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Мой NFT Конструктор</title>
   <link rel="stylesheet" href="style.css" />
 </head>
@@ -14,7 +15,9 @@
   <main>
     <div class="constructor">
       <div class="controls">
-        <button id="randomize" disabled title="Загружаю ассеты…">🎲 Случайный персонаж</button>
+        <button id="randomize" disabled title="Загружаю ассеты…">
+          🎲 Случайный персонаж
+        </button>
 
         <h2>Выбор элементов</h2>
 
@@ -70,26 +73,26 @@
         <button id="download">⬇ Скачать персонажа</button>
       </div>
 
+      <!-- Канвас + лоадер -->
       <div class="canvas-container">
-  <canvas id="character" width="600" height="600"></canvas>
-  <canvas id="character" width="500" height="500"></canvas>
-<div id="loader" class="loader" style="display:none;">
-  Itezie одевается...
-</div>
-
-  <p id="rarity-label" class="rarity-text"></p>
-</div>
-
+        <div class="canvas-wrapper">
+          <canvas id="character" width="600" height="600"></canvas>
+          <div id="loader" class="loader" style="display:none;">
+            Itezie одевается...
+          </div>
+        </div>
+        <p id="rarity-label" class="rarity-text"></p>
+      </div>
     </div>
   </main>
 
- <script src="rarity.js"></script>
- <script>
-  const s = document.createElement("script");
-  s.src = "script.js?v=" + Date.now();
-  s.defer = true;
-  document.head.appendChild(s);
-</script>
-
+  <!-- Скрипты -->
+  <script src="rarity.js"></script>
+  <script>
+    const s = document.createElement("script");
+    s.src = "script.js?v=" + Date.now();
+    s.defer = true;
+    document.head.appendChild(s);
+  </script>
 </body>
 </html>

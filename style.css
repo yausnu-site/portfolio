@@ -176,7 +176,13 @@ canvas.loaded {
 .rarity-rare { color: dodgerblue; }
 .rarity-epic { color: purple; }
 .rarity-legendary { color: gold; }
+
 /* ====== LOADER ====== */
+.canvas-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
 .loader {
   position: absolute;
   top: 50%;
@@ -184,7 +190,7 @@ canvas.loaded {
   transform: translate(-50%, -50%);
   text-align: center;
   font-family: "Arial", sans-serif;
-  color: #fff;
+  color: #ffcc00; /* жёлтая надпись */
   font-size: 1.2rem;
   pointer-events: none;
   z-index: 10;
@@ -196,7 +202,7 @@ canvas.loaded {
   width: 40px;
   height: 40px;
   margin: 0 auto 10px;
-  border: 4px solid #fff;
+  border: 4px solid #ffcc00; /* жёлтый индикатор */
   border-top-color: transparent;
   border-radius: 50%;
   animation: spin 1s linear infinite;
@@ -205,5 +211,31 @@ canvas.loaded {
 @keyframes spin {
   to {
     transform: rotate(360deg);
+  }
+}
+
+/* ====== Адаптив ====== */
+@media (max-width: 768px) {
+  main {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .constructor {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .controls {
+    max-width: 100%;
+  }
+
+  canvas {
+    width: 100%;
+    height: auto;
+  }
+
+  button {
+    width: 100%;
   }
 }
