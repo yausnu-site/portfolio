@@ -216,7 +216,8 @@ function calculateCharacterRarity() {
   return "Legendary";
 }
 
-// 📈 Подсчёт шанса выпадения (с округлением до 7 знаков после запятой)
+
+// 📈 Подсчёт шанса выпадения (динамично, не больше 15 символов)
 function calculateDropChance() {
   let probability = 1;
 
@@ -238,7 +239,15 @@ function calculateDropChance() {
     probability *= weight / totalWeight;
   }
 
-  return (probability * 100).toFixed(7); // ← округляем до 7 знаков
+  let percent = probability * 100;
+  let str = percent.toString();
+
+  // Если число слишком длинное — обрезаем до 15 символов
+  if (str.length > 15) {
+    str = percent.toPrecision(15);
+  }
+
+  return str;
 }
 
 
