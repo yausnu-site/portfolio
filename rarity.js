@@ -1,45 +1,224 @@
 // rarity.js
-// Здесь ты задаёшь шансы выпадения для каждой категории.
-// "" — это значение "Нет" (например, без маски).
+// Система редкости: Common (обычное), Rare (редкое), Epic (эпическое), Legendary (легендарное)
 
+const rarityLevels = {
+  Common: 60,
+  Rare: 25,
+  Epic: 10,
+  Legendary: 5
+};
+
+// Ассеты и их редкость
 const rarity = {
-  mask: {
-    "": 50,            // 50% шанс "Нет маски"
-    "Black.png": 20,   // 20%
-    "Red.png": 20,     // 20%
-    "White.png": 10    // 10%
+  background: {
+    "Acid.png": "Common",
+    "Blue.png": "Common",
+    "BlueSky.png": "Rare",
+    "LightGreen.png": "Common",
+    "Night.png": "Rare",
+    "NightBlue.png": "Rare",
+    "NightSunset.png": "Epic",
+    "Ocean.png": "Common",
+    "Pinki.png": "Epic",
+    "Purple.png": "Rare",
+    "Red.png": "Epic",
+    "SuperNight.png": "Legendary",
+    "Torn.png": "Legendary"
+  },
+  body: {
+    "Angel.png": "Epic",
+    "Beige.png": "Common",
+    "Black.png": "Rare",
+    "Demon.png": "Epic",
+    "Devil.png": "Legendary",
+    "Pink.png": "Common",
+    "White.png": "Common"
+  },
+  eyes: {
+    "Angel.png": "Epic",
+    "Bruises_Blue.png": "Rare",
+    "Bruises_Green.png": "Rare",
+    "Closed_V1.png": "Common",
+    "Closed_V2.png": "Common",
+    "Closed_V3.png": "Common",
+    "Demon.png": "Epic",
+    "Hero_Turquoise.png": "Epic",
+    "Hero_White.png": "Epic",
+    "Hero_Yellow.png": "Epic",
+    "Mythick.png": "Legendary",
+    "Stand_Blue.png": "Common",
+    "Stand_Green.png": "Common",
+    "Stand_Red.png": "Common",
+    "Tatoo_purple.png": "Rare"
+  },
+  head: {
+    "Anime_Purple_.png": "Rare",
+    "Anime_Red.png": "Rare",
+    "Anime_Yellow.png": "Rare",
+    "Bald_Black.png": "Common",
+    "Bald_Blonde.png": "Common",
+    "Bald_Stand.png": "Common",
+    "HairBack_Orange.png": "Common",
+    "HairBack_Silver.png": "Rare",
+    "HairBack_Stand.png": "Common",
+    "HairUp_Blonde.png": "Common",
+    "HairUp_Dark.png": "Common",
+    "HairUp_White.png": "Rare",
+    "Punk_green.png": "Rare",
+    "Punk_red.png": "Rare",
+    "Punk_silver.png": "Rare",
+    "Shaggy_Crimson.png": "Rare",
+    "Shaggy_Grey.png": "Common",
+    "Shaggy_Stand.png": "Common",
+    "Sneaf_Orange.png": "Rare",
+    "Sneaf_Silver.png": "Rare",
+    "Sneaf_Stand.png": "Common",
+    "Tail_Black.png": "Common",
+    "Tail_Blonde.png": "Common",
+    "Tail_Silver.png": "Rare",
+    "Undercut_Blonde.png": "Common",
+    "Undercut_Purple.png": "Rare",
+    "Undercut_Stand.png": "Common"
+  },
+  mouth: {
+    "Angry.png": "Common",
+    "Open.png": "Common",
+    "Serious.png": "Common",
+    "Slight.png": "Common",
+    "Smile.png": "Common",
+    "Sneaky.png": "Rare",
+    "Stand.png": "Common",
+    "Teeth.png": "Rare"
+  },
+  outfit: {
+    "Badlon_Brown.png": "Common",
+    "Badlon_Red.png": "Common",
+    "Badlon_White.png": "Common",
+    "BathrobeV2_Blue.png": "Rare",
+    "BathrobeV2_Brown.png": "Rare",
+    "Bathrobe_Brown.png": "Common",
+    "Bathrobe_Green.png": "Common",
+    "Bathrobe_Orange.png": "Common",
+    "Bathrobe_White_V2.png": "Rare",
+    "Blazer_Black.png": "Epic",
+    "Blazer_Coffiemilk.png": "Epic",
+    "Blazer_White.png": "Epic",
+    "Bomber_Camouflage.png": "Rare",
+    "Bomber_Neon.png": "Epic",
+    "Bomber_Sport.png": "Rare",
+    "DownJacket_Camouflage.png": "Rare",
+    "DownJacket_Purple.png": "Rare",
+    "DownJacket_Red.png": "Rare",
+    "Jacket_Blue.png": "Common",
+    "Jacket_Brown.png": "Common",
+    "Jacket_purple.png": "Common",
+    "Jean_Green.png": "Common",
+    "Jean_Jacket.png": "Common",
+    "Jean_Pilot.png": "Rare",
+    "Kimono-Hi.png": "Epic",
+    "Kimono-Hikari.png": "Epic",
+    "Kimono_Blue.png": "Rare",
+    "Kimono_Brown.png": "Rare",
+    "Kimono_Mizu.png": "Epic",
+    "Kimono_Red.png": "Rare",
+    "Monk_Black.png": "Epic",
+    "Monk_Red.png": "Epic",
+    "Monk_White.png": "Epic",
+    "Office_Black.png": "Common",
+    "Office_Blue.png": "Common",
+    "Office_White.png": "Common",
+    "Qipao_Black.png": "Rare",
+    "Qipao_Blue.png": "Rare",
+    "Qipao_Red.png": "Rare",
+    "ShirtVest_Black.png": "Common",
+    "ShirtVest_Blue.png": "Common",
+    "ShirtVest_White.png": "Common",
+    "Suikan_Black.png": "Rare",
+    "Suikan_Blue.png": "Rare",
+    "Suikan_White.png": "Rare",
+    "Sweatshirt_Angry.png": "Common",
+    "Sweatshirt_Goldsmile.png": "Common",
+    "Sweatshirt_Itezie_Black.png": "Rare",
+    "Sweatshirt_Itezie_Red.png": "Rare",
+    "Sweatshirt_Katana.png": "Epic",
+    "Sweatshirt_White.png": "Common",
+    "TshirtV2_Black.png": "Common",
+    "TshirtV2_Brown.png": "Common",
+    "TshirtV2_Yellow.png": "Common",
+    "Tshirt_Black.png": "Common",
+    "Tshirt_Green.png": "Common",
+    "Tshirt_White.png": "Common",
+    "Windbreaker_Black.png": "Rare",
+    "Windbreaker_Orange.png": "Rare",
+    "Windbreaker_Purple.png": "Rare"
+  },
+  offhand: {
+    "": "Common",
+    "Katana_Black.png": "Rare",
+    "Katana_Bluesky.png": "Rare",
+    "Katana_Bluewather.png": "Rare",
+    "Katana_Demon.png": "Epic",
+    "Katana_Goldfire.png": "Epic",
+    "Katana_Hinokami.png": "Legendary",
+    "Krab.png": "Epic",
+    "Staff_Diamond.png": "Epic",
+    "Staff_Fireball.png": "Epic",
+    "Staff_Goldenpink.png": "Epic",
+    "Staff_Metal.png": "Rare",
+    "Staff_Ruby.png": "Epic",
+    "Staff_Silver.png": "Rare",
+    "Sworld_Emerald.png": "Rare",
+    "Sworld_Golds.png": "Epic",
+    "Sworld_Stand.png": "Common"
   },
   glasses: {
-    "": 70,            // чаще без очков
-    "Black.png": 10,
-    "Blue.png": 10,
-    "Red.png": 10
+    "": "Common",
+    "Black.png": "Rare",
+    "Blue.png": "Rare",
+    "Red.png": "Epic"
+  },
+  mask: {
+    "": "Common",
+    "Black.png": "Rare",
+    "Red.png": "Epic",
+    "White.png": "Legendary"
   },
   mouthAttr: {
-    "": 80,            // почти всегда пусто
-    "Asleep.png": 5,
-    "Exhalation.png": 5,
-    "Gum.png": 5,
-    "Sig.png": 5
+    "": "Common",
+    "Asleep.png": "Rare",
+    "Exhalation.png": "Rare",
+    "Gum.png": "Rare",
+    "Macdond.png": "Epic",
+    "Music.png": "Legendary",
+    "Sig.png": "Legendary",
+    "Spikelet.png": "Epic",
+    "Tubule.png": "Rare"
   },
   earbuds: {
-    "": 60,
-    "Black.png": 20,
-    "Red.png": 10,
-    "White.png": 10
+    "": "Common",
+    "Black.png": "Rare",
+    "Red.png": "Epic",
+    "White.png": "Rare"
   },
   earring: {
-    "": 50,
-    "Hoop_Gold.png": 20,
-    "Hoop_Metal.png": 15,
-    "Hoop_Red.png": 15
+    "": "Common",
+    "EarCuffs_Gold.png": "Epic",
+    "EarCuffs_Lasur.png": "Epic",
+    "EarCuffs_Metal.png": "Rare",
+    "Hoop_Gold.png": "Rare",
+    "Hoop_Metal.png": "Rare",
+    "Hoop_Red.png": "Rare",
+    "J.ear_Hanafudo.png": "Legendary",
+    "J.ear_Himavari.png": "Legendary",
+    "J.ear_Kiriko.png": "Legendary",
+    "Mini_Argentum.png": "Rare",
+    "Mini_Black.png": "Rare",
+    "Mini_gold.png": "Epic"
   }
 };
 
-// Для работы в браузере
+window.rarityLevels = rarityLevels;
 window.rarity = rarity;
-
-// Для Node.js (например, тестов или генератора)
 if (typeof module !== "undefined") {
-  module.exports = rarity;
+  module.exports = { rarityLevels, rarity };
 }

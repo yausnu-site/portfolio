@@ -13,11 +13,13 @@ const assets = {
   earring: "assets/Earring"
 };
 
+// Эти категории обязательны всегда
 const REQUIRED = ["background", "body", "eyes"];
 
+// Порядок отрисовки слоёв (снизу вверх)
 const drawOrder = [
   "background",
-  "offhand",      // как ты хотел — сразу после фона
+  "offhand",     // по твоему пожеланию — сразу после фона
   "body",
   "outfit",
   "head",
@@ -30,26 +32,32 @@ const drawOrder = [
   "glasses"
 ];
 
+// Элементы интерфейса
 const canvas = document.getElementById("character");
 const ctx = canvas.getContext("2d");
 const randomBtn = document.getElementById("randomize");
 const downloadBtn = document.getElementById("download");
+const rarityLabel = document.getElementById("rarity-label");
 
+// Текущее состояние выбора
 let current = {};
 let options = {};
 
+// Загрузка списка ассетов
 async function loadOptions() {
   const cacheBuster = `?v=${Date.now()}`;
   const res = await fetch(`assets.json${cacheBuster}`, { cache: "no-store" });
-  if (!res.ok) throw new Error(`Failed to load assets.json: ${res.status}`);
+  if (!res.ok) throw new Error(`Не удалось загрузить assets.json: ${res.status}`);
   return res.json();
 }
 
+// Заполнение выпадающих списков
 function fillSelects() {
   for (let key in options) {
     const select = document.getElementById(key);
     if (!select) continue;
 
+    // Добавляем вариант "Нет" для необязательных
     if (!REQUIRED.includes(key)) {
       const noneOpt = document.createElement("option");
       noneOpt.value = "";
@@ -58,6 +66,7 @@ function fillSelects() {
       current[key] = "";
     }
 
+    // Добавляем файлы
     options[key].forEach(file => {
       const opt = document.createElement("option");
       opt.value = file;
@@ -65,6 +74,7 @@ function fillSelects() {
       select.appendChild(opt);
     });
 
+    // Стартовые значения
     if (REQUIRED.includes(key)) {
       select.value = options[key][0];
       current[key] = options[key][0];
@@ -73,6 +83,7 @@ function fillSelects() {
     }
   }
 
+  // Подписка на изменения
   document.querySelectorAll("select").forEach(select => {
     select.addEventListener("change", (e) => {
       current[e.target.id] = e.target.value;
@@ -81,6 +92,7 @@ function fillSelects() {
   });
 }
 
+// Отрисовка персонажа
 function drawCharacter() {
   canvas.classList.add("loading");
   canvas.classList.remove("loaded");
@@ -103,6 +115,7 @@ function drawCharacter() {
   if (images.length === 0) {
     canvas.classList.remove("loading");
     canvas.classList.add("loaded");
+    updateRarityLabel();
     return;
   }
 
@@ -114,21 +127,67 @@ function drawCharacter() {
         images.forEach(it => ctx.drawImage(it.img, 0, 0, canvas.width, canvas.height));
         canvas.classList.remove("loading");
         canvas.classList.add("loaded");
+        updateRarityLabel();
       }
     };
   });
 }
 
-// 🎲 Функция для выбора по весам
-function weightedPick(weights) {
-  const entries = Object.entries(weights);
-  const total = entries.reduce((sum, [, w]) => sum + w, 0);
+// 🎲 Выбор с учётом редкости
+function weightedPickWithRarity(category) {
+  const items = rarity[category];
+  if (!items) return null;
+
+  const entries = Object.entries(items).map(([file, rarityName]) => {
+    return { value: file, weight: rarityLevels[rarityName] || 1 };
+  });
+
+  const total = entries.reduce((sum, e) => sum + e.weight, 0);
   let rand = Math.random() * total;
-  for (const [val, weight] of entries) {
-    rand -= weight;
-    if (rand < 0) return val;
+  for (const e of entries) {
+    rand -= e.weight;
+    if (rand < 0) return e.value;
   }
-  return entries[0][0]; // fallback
+  return entries[0].value;
+}
+
+// 📊 Подсчёт редкости персонажа
+function calculateCharacterRarity() {
+  let totalScore = 0;
+  let count = 0;
+
+  for (let key in current) {
+    const val = current[key];
+    if (val && rarity[key] && rarityLevels[rarity[key][val]]) {
+      totalScore += rarityLevels[rarity[key][val]];
+      count++;
+    }
+  }
+
+  if (count === 0) return "Common";
+
+  const avg = totalScore / count;
+
+  if (avg >= 50) return "Common";
+  if (avg >= 20) return "Rare";
+  if (avg >= 8) return "Epic";
+  return "Legendary";
+}
+
+// 🖊️ Обновление надписи с редкостью
+function updateRarityLabel() {
+  const rarityClassMap = {
+    Common: "rarity-common",
+    Rare: "rarity-rare",
+    Epic: "rarity-epic",
+    Legendary: "rarity-legendary"
+  };
+
+  const rarityName = calculateCharacterRarity();
+
+  rarityLabel.className = "rarity-text";
+  rarityLabel.classList.add(rarityClassMap[rarityName]);
+  rarityLabel.textContent = `🌟 ${rarityName} персонаж`;
 }
 
 // Скачать персонажа
@@ -154,12 +213,10 @@ randomBtn.addEventListener("click", () => {
       current[key] = select.value;
     } else {
       if (window.rarity && rarity[key]) {
-        // используем шансы из rarity.js
-        const pick = weightedPick(rarity[key]);
+        const pick = weightedPickWithRarity(key);
         select.value = pick;
         current[key] = pick;
       } else {
-        // стандартный рандом
         const withNone = ["", ...options[key]];
         const rand = Math.floor(Math.random() * withNone.length);
         select.value = withNone[rand];
@@ -171,7 +228,7 @@ randomBtn.addEventListener("click", () => {
   drawCharacter();
 });
 
-// Инициализация
+// 🚀 Инициализация
 (async () => {
   try {
     options = await loadOptions();
