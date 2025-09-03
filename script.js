@@ -138,9 +138,14 @@ function weightedPickWithRarity(category) {
   const items = rarity[category];
   if (!items) return null;
 
-  const entries = Object.entries(items).map(([file, rarityName]) => {
-    return { value: file, weight: rarityLevels[rarityName] || 1 };
-  });
+  const entries = options[category]
+    .filter(file => items[file] !== undefined || file === "")
+    .map(file => {
+      const rarityName = items[file] || "Common"; // если нет в rarity.js → Common
+      return { value: file, weight: rarityLevels[rarityName] || 1 };
+    });
+
+  if (entries.length === 0) return "";
 
   const total = entries.reduce((sum, e) => sum + e.weight, 0);
   let rand = Math.random() * total;
@@ -158,19 +163,26 @@ function calculateCharacterRarity() {
 
   for (let key in current) {
     const val = current[key];
-    if (val && rarity[key] && rarityLevels[rarity[key][val]]) {
-      totalScore += rarityLevels[rarity[key][val]];
-      count++;
+    if (!val) continue;
+
+    // если в rarity.js нет ассета → считаем его Common
+    let rarityName = "Common";
+    if (rarity[key] && rarity[key][val]) {
+      rarityName = rarity[key][val];
     }
+
+    totalScore += rarityLevels[rarityName] || 1;
+    count++;
   }
 
   if (count === 0) return "Common";
 
   const avg = totalScore / count;
 
-  if (avg >= 50) return "Common";
+  // 📌 Диапазоны (подобраны для баланса)
+  if (avg >= 40) return "Common";
   if (avg >= 20) return "Rare";
-  if (avg >= 8) return "Epic";
+  if (avg >= 10) return "Epic";
   return "Legendary";
 }
 
@@ -185,8 +197,8 @@ function updateRarityLabel() {
 
   const rarityName = calculateCharacterRarity();
 
-  rarityLabel.className = "rarity-text";
-  rarityLabel.classList.add(rarityClassMap[rarityName]);
+  rarityLabel.className = "rarity-text"; // сброс классов
+  rarityLabel.classList.add(rarityClassMap[rarityName]); // добавить цвет
   rarityLabel.textContent = `🌟 ${rarityName} персонаж`;
 }
 
