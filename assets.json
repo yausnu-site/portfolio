@@ -1,201 +1,742 @@
 {
   "background": [
-    "Acid.png",
-    "Blue.png",
-    "BlueSky.png",
-    "LightGreen.png",
-    "Night.png",
-    "NightBlue.png",
-    "NightSunset.png",
-    "Ocean.png",
-    "Pinki.png",
-    "Purple.png",
-    "Red.png",
-    "SuperNight.png",
-    "Torn.png"
+    {
+      "file": "Acid.png",
+      "rarity": "Common"
+    },
+    {
+      "file": "Blue.png",
+      "rarity": "Common"
+    },
+    {
+      "file": "BlueSky.png",
+      "rarity": "Common"
+    },
+    {
+      "file": "LightGreen.png",
+      "rarity": "Common"
+    },
+    {
+      "file": "Night.png",
+      "rarity": "Common"
+    },
+    {
+      "file": "NightBlue.png",
+      "rarity": "Common"
+    },
+    {
+      "file": "NightSunset.png",
+      "rarity": "Common"
+    },
+    {
+      "file": "Ocean.png",
+      "rarity": "Common"
+    },
+    {
+      "file": "Pinki.png",
+      "rarity": "Common"
+    },
+    {
+      "file": "Purple.png",
+      "rarity": "Common"
+    },
+    {
+      "file": "Red.png",
+      "rarity": "Common"
+    },
+    {
+      "file": "SuperNight.png",
+      "rarity": "Common"
+    },
+    {
+      "file": "Torn.png",
+      "rarity": "Common"
+    }
   ],
   "body": [
-    "Angel.png",
-    "Beige.png",
-    "Black.png",
-    "Demon.png",
-    "Devil.png",
-    "Pink.png",
-    "White.png"
-  ],
-  "eyes": [
-    "Angel.png",
-    "Bruises_Blue.png",
-    "Bruises_Green.png",
-    "Closed_V1.png",
-    "Closed_V2.png",
-    "Closed_V3.png",
-    "Demon.png",
-    "Hero_Turquoise.png",
-    "Hero_White.png",
-    "Hero_Yellow.png",
-    "Mythick.png",
-    "Stand_Blue.png",
-    "Stand_Green.png",
-    "Stand_Red.png",
-    "Tatoo_purple.png"
-  ],
-  "head": [
-    "Anime_Purple_.png",
-    "Anime_Red.png",
-    "Anime_Yellow.png",
-    "Bald_Black.png",
-    "Bald_Blonde.png",
-    "Bald_Stand.png",
-    "HairBack_Orange.png",
-    "HairBack_Silver.png",
-    "HairBack_Stand.png",
-    "HairUp_Blonde.png",
-    "HairUp_Dark.png",
-    "HairUp_White.png",
-    "Punk_green.png",
-    "Punk_red.png",
-    "Punk_silver.png",
-    "Shaggy_Crimson.png",
-    "Shaggy_Grey.png",
-    "Shaggy_Stand.png",
-    "Sneaf_Orange.png",
-    "Sneaf_Silver.png",
-    "Sneaf_Stand.png",
-    "Tail_Black.png",
-    "Tail_Blonde.png",
-    "Tail_Silver.png",
-    "Undercut_Blonde.png",
-    "Undercut_Purple.png",
-    "Undercut_Stand.png"
-  ],
-  "mouth": [
-    "Angry.png",
-    "Open.png",
-    "Serious.png",
-    "Slight.png",
-    "Smile.png",
-    "Sneaky.png",
-    "Stand.png",
-    "Teeth.png"
-  ],
-  "outfit": [
-    "Badlon_Brown.png",
-    "Badlon_Red.png",
-    "Badlon_White.png",
-    "BathrobeV2_Blue.png",
-    "BathrobeV2_Brown.png",
-    "Bathrobe_Brown.png",
-    "Bathrobe_Green.png",
-    "Bathrobe_Orange.png",
-    "Bathrobe_White_V2.png",
-    "Blazer_Black.png",
-    "Blazer_Coffiemilk.png",
-    "Blazer_White.png",
-    "Bomber_Camouflage.png",
-    "Bomber_Neon.png",
-    "Bomber_Sport.png",
-    "DownJacket_Camouflage.png",
-    "DownJacket_Purple.png",
-    "DownJacket_Red.png",
-    "Jacket_Blue.png",
-    "Jacket_Brown.png",
-    "Jacket_purple.png",
-    "Jean_Green.png",
-    "Jean_Jacket.png",
-    "Jean_Pilot.png",
-    "Kimono-Hi.png",
-    "Kimono-Hikari.png",
-    "Kimono_Blue.png",
-    "Kimono_Brown.png",
-    "Kimono_Mizu.png",
-    "Kimono_Red.png",
-    "Monk_Black.png",
-    "Monk_Red.png",
-    "Monk_White.png",
-    "Office_Black.png",
-    "Office_Blue.png",
-    "Office_White.png",
-    "Qipao_Black.png",
-    "Qipao_Blue.png",
-    "Qipao_Red.png",
-    "ShirtVest_Black.png",
-    "ShirtVest_Blue.png",
-    "ShirtVest_White.png",
-    "Suikan_Black.png",
-    "Suikan_Blue.png",
-    "Suikan_White.png",
-    "Sweatshirt_Angry.png",
-    "Sweatshirt_Goldsmile.png",
-    "Sweatshirt_Itezie_Black.png",
-    "Sweatshirt_Itezie_Red.png",
-    "Sweatshirt_Katana.png",
-    "Sweatshirt_White.png",
-    "TshirtV2_Black.png",
-    "TshirtV2_Brown.png",
-    "TshirtV2_Yellow.png",
-    "Tshirt_Black.png",
-    "Tshirt_Green.png",
-    "Tshirt_White.png",
-    "Windbreaker_Black.png",
-    "Windbreaker_Orange.png",
-    "Windbreaker_Purple.png"
-  ],
-  "offhand": [
-    "Katana_Black.png",
-    "Katana_Bluesky.png",
-    "Katana_Bluewather.png",
-    "Katana_Demon.png",
-    "Katana_Goldfire.png",
-    "Katana_Hinokami.png",
-    "Krab.png",
-    "Staff_Diamond.png",
-    "Staff_Fireball.png",
-    "Staff_Goldenpink.png",
-    "Staff_Metal.png",
-    "Staff_Ruby.png",
-    "Staff_Silver.png",
-    "Sworld_Emerald.png",
-    "Sworld_Golds.png",
-    "Sworld_Stand.png"
-  ],
-  "glasses": [
-    "Black.png",
-    "Blue.png",
-    "Red.png"
-  ],
-  "mask": [
-    "Black.png",
-    "Red.png",
-    "White.png"
-  ],
-  "mouthAttr": [
-    "Asleep.png",
-    "Exhalation.png",
-    "Gum.png",
-    "Macdond.png",
-    "Music.png",
-    "Sig.png",
-    "Spikelet.png",
-    "Tubule.png"
+    {
+      "file": "Angel.png",
+      "rarity": "Common"
+    },
+    {
+      "file": "Beige.png",
+      "rarity": "Common"
+    },
+    {
+      "file": "Black.png",
+      "rarity": "Common"
+    },
+    {
+      "file": "Demon.png",
+      "rarity": "Common"
+    },
+    {
+      "file": "Devil.png",
+      "rarity": "Common"
+    },
+    {
+      "file": "Pink.png",
+      "rarity": "Common"
+    },
+    {
+      "file": "White.png",
+      "rarity": "Common"
+    }
   ],
   "earbuds": [
-    "Black.png",
-    "Red.png",
-    "White.png"
+    {
+      "file": "Black.png",
+      "rarity": "Common"
+    },
+    {
+      "file": "Red.png",
+      "rarity": "Common"
+    },
+    {
+      "file": "White.png",
+      "rarity": "Common"
+    }
   ],
   "earring": [
-    "EarCuffs_Gold.png",
-    "EarCuffs_Lasur.png",
-    "EarCuffs_Metal.png",
-    "Hoop_Gold.png",
-    "Hoop_Metal.png",
-    "Hoop_Red.png",
-    "J.ear_Hanafudo.png",
-    "J.ear_Himavari.png",
-    "J.ear_Kiriko.png",
-    "Mini_Argentum.png",
-    "Mini_Black.png",
-    "Mini_gold.png"
+    {
+      "file": "EarCuffs_Gold.png",
+      "rarity": "Common"
+    },
+    {
+      "file": "EarCuffs_Lasur.png",
+      "rarity": "Common"
+    },
+    {
+      "file": "EarCuffs_Metal.png",
+      "rarity": "Common"
+    },
+    {
+      "file": "Hoop_Gold.png",
+      "rarity": "Common"
+    },
+    {
+      "file": "Hoop_Metal.png",
+      "rarity": "Common"
+    },
+    {
+      "file": "Hoop_Red.png",
+      "rarity": "Common"
+    },
+    {
+      "file": "J.ear_Hanafudo.png",
+      "rarity": "Common"
+    },
+    {
+      "file": "J.ear_Himavari.png",
+      "rarity": "Common"
+    },
+    {
+      "file": "J.ear_Kiriko.png",
+      "rarity": "Common"
+    },
+    {
+      "file": "Mini_Argentum.png",
+      "rarity": "Common"
+    },
+    {
+      "file": "Mini_Black.png",
+      "rarity": "Common"
+    },
+    {
+      "file": "Mini_gold.png",
+      "rarity": "Common"
+    }
+  ],
+  "eyes": [
+    {
+      "file": "Angel.png",
+      "rarity": "Common"
+    },
+    {
+      "file": "Bruises_Blue.png",
+      "rarity": "Common"
+    },
+    {
+      "file": "Bruises_Green.png",
+      "rarity": "Common"
+    },
+    {
+      "file": "Closed_V1.png",
+      "rarity": "Common"
+    },
+    {
+      "file": "Closed_V2.png",
+      "rarity": "Common"
+    },
+    {
+      "file": "Closed_V3.png",
+      "rarity": "Common"
+    },
+    {
+      "file": "Demon.png",
+      "rarity": "Common"
+    },
+    {
+      "file": "Hero_Turquoise.png",
+      "rarity": "Common"
+    },
+    {
+      "file": "Hero_White.png",
+      "rarity": "Common"
+    },
+    {
+      "file": "Hero_Yellow.png",
+      "rarity": "Common"
+    },
+    {
+      "file": "Mythick.png",
+      "rarity": "Common"
+    },
+    {
+      "file": "Stand_Blue.png",
+      "rarity": "Common"
+    },
+    {
+      "file": "Stand_Green.png",
+      "rarity": "Common"
+    },
+    {
+      "file": "Stand_Red.png",
+      "rarity": "Common"
+    },
+    {
+      "file": "Tatoo_purple.png",
+      "rarity": "Common"
+    }
+  ],
+  "glasses": [
+    {
+      "file": "Black.png",
+      "rarity": "Common"
+    },
+    {
+      "file": "Blue.png",
+      "rarity": "Common"
+    },
+    {
+      "file": "Red.png",
+      "rarity": "Common"
+    }
+  ],
+  "head": [
+    {
+      "file": "Anime_Purple_.png",
+      "rarity": "Common"
+    },
+    {
+      "file": "Anime_Red.png",
+      "rarity": "Common"
+    },
+    {
+      "file": "Anime_Yellow.png",
+      "rarity": "Common"
+    },
+    {
+      "file": "Bald_Black.png",
+      "rarity": "Common"
+    },
+    {
+      "file": "Bald_Blonde.png",
+      "rarity": "Common"
+    },
+    {
+      "file": "Bald_Stand.png",
+      "rarity": "Common"
+    },
+    {
+      "file": "HairBack_Orange.png",
+      "rarity": "Common"
+    },
+    {
+      "file": "HairBack_Silver.png",
+      "rarity": "Common"
+    },
+    {
+      "file": "HairBack_Stand.png",
+      "rarity": "Common"
+    },
+    {
+      "file": "HairUp_Blonde.png",
+      "rarity": "Common"
+    },
+    {
+      "file": "HairUp_Dark.png",
+      "rarity": "Common"
+    },
+    {
+      "file": "HairUp_White.png",
+      "rarity": "Common"
+    },
+    {
+      "file": "Punk_green.png",
+      "rarity": "Common"
+    },
+    {
+      "file": "Punk_red.png",
+      "rarity": "Common"
+    },
+    {
+      "file": "Punk_silver.png",
+      "rarity": "Common"
+    },
+    {
+      "file": "Shaggy_Crimson.png",
+      "rarity": "Common"
+    },
+    {
+      "file": "Shaggy_Grey.png",
+      "rarity": "Common"
+    },
+    {
+      "file": "Shaggy_Stand.png",
+      "rarity": "Common"
+    },
+    {
+      "file": "Sneaf_Orange.png",
+      "rarity": "Common"
+    },
+    {
+      "file": "Sneaf_Silver.png",
+      "rarity": "Common"
+    },
+    {
+      "file": "Sneaf_Stand.png",
+      "rarity": "Common"
+    },
+    {
+      "file": "Tail_Black.png",
+      "rarity": "Common"
+    },
+    {
+      "file": "Tail_Blonde.png",
+      "rarity": "Common"
+    },
+    {
+      "file": "Tail_Silver.png",
+      "rarity": "Common"
+    },
+    {
+      "file": "Undercut_Blonde.png",
+      "rarity": "Common"
+    },
+    {
+      "file": "Undercut_Purple.png",
+      "rarity": "Common"
+    },
+    {
+      "file": "Undercut_Stand.png",
+      "rarity": "Common"
+    }
+  ],
+  "mouth": [
+    {
+      "file": "Angry.png",
+      "rarity": "Common"
+    },
+    {
+      "file": "Open.png",
+      "rarity": "Common"
+    },
+    {
+      "file": "Serious.png",
+      "rarity": "Common"
+    },
+    {
+      "file": "Slight.png",
+      "rarity": "Common"
+    },
+    {
+      "file": "Smile.png",
+      "rarity": "Common"
+    },
+    {
+      "file": "Sneaky.png",
+      "rarity": "Common"
+    },
+    {
+      "file": "Stand.png",
+      "rarity": "Common"
+    },
+    {
+      "file": "Teeth.png",
+      "rarity": "Common"
+    }
+  ],
+  "mouthAttr": [
+    {
+      "file": "Asleep.png",
+      "rarity": "Common"
+    },
+    {
+      "file": "Black.png",
+      "rarity": "Common"
+    },
+    {
+      "file": "Exhalation.png",
+      "rarity": "Common"
+    },
+    {
+      "file": "Gum.png",
+      "rarity": "Common"
+    },
+    {
+      "file": "Macdond.png",
+      "rarity": "Common"
+    },
+    {
+      "file": "Music.png",
+      "rarity": "Common"
+    },
+    {
+      "file": "Red.png",
+      "rarity": "Common"
+    },
+    {
+      "file": "Sig.png",
+      "rarity": "Common"
+    },
+    {
+      "file": "Spikelet.png",
+      "rarity": "Common"
+    },
+    {
+      "file": "Tubule.png",
+      "rarity": "Common"
+    },
+    {
+      "file": "White.png",
+      "rarity": "Common"
+    }
+  ],
+  "offhand": [
+    {
+      "file": "Katana_Black.png",
+      "rarity": "Common"
+    },
+    {
+      "file": "Katana_Bluesky.png",
+      "rarity": "Common"
+    },
+    {
+      "file": "Katana_Bluewather.png",
+      "rarity": "Common"
+    },
+    {
+      "file": "Katana_Demon.png",
+      "rarity": "Common"
+    },
+    {
+      "file": "Katana_Goldfire.png",
+      "rarity": "Common"
+    },
+    {
+      "file": "Katana_Hinokami.png",
+      "rarity": "Common"
+    },
+    {
+      "file": "Krab.png",
+      "rarity": "Common"
+    },
+    {
+      "file": "Staff_Diamond.png",
+      "rarity": "Common"
+    },
+    {
+      "file": "Staff_Fireball.png",
+      "rarity": "Common"
+    },
+    {
+      "file": "Staff_Goldenpink.png",
+      "rarity": "Common"
+    },
+    {
+      "file": "Staff_Metal.png",
+      "rarity": "Common"
+    },
+    {
+      "file": "Staff_Ruby.png",
+      "rarity": "Common"
+    },
+    {
+      "file": "Staff_Silver.png",
+      "rarity": "Common"
+    },
+    {
+      "file": "Sworld_Emerald.png",
+      "rarity": "Common"
+    },
+    {
+      "file": "Sworld_Golds.png",
+      "rarity": "Common"
+    },
+    {
+      "file": "Sworld_Stand.png",
+      "rarity": "Common"
+    }
+  ],
+  "outfit": [
+    {
+      "file": "Badlon_Brown.png",
+      "rarity": "Common"
+    },
+    {
+      "file": "Badlon_Red.png",
+      "rarity": "Common"
+    },
+    {
+      "file": "Badlon_White.png",
+      "rarity": "Common"
+    },
+    {
+      "file": "BathrobeV2_Blue.png",
+      "rarity": "Common"
+    },
+    {
+      "file": "BathrobeV2_Brown.png",
+      "rarity": "Common"
+    },
+    {
+      "file": "Bathrobe_Brown.png",
+      "rarity": "Common"
+    },
+    {
+      "file": "Bathrobe_Green.png",
+      "rarity": "Common"
+    },
+    {
+      "file": "Bathrobe_Orange.png",
+      "rarity": "Common"
+    },
+    {
+      "file": "Bathrobe_White_V2.png",
+      "rarity": "Common"
+    },
+    {
+      "file": "Blazer_Black.png",
+      "rarity": "Common"
+    },
+    {
+      "file": "Blazer_Coffiemilk.png",
+      "rarity": "Common"
+    },
+    {
+      "file": "Blazer_White.png",
+      "rarity": "Common"
+    },
+    {
+      "file": "Bomber_Camouflage.png",
+      "rarity": "Common"
+    },
+    {
+      "file": "Bomber_Neon.png",
+      "rarity": "Common"
+    },
+    {
+      "file": "Bomber_Sport.png",
+      "rarity": "Common"
+    },
+    {
+      "file": "DownJacket_Camouflage.png",
+      "rarity": "Common"
+    },
+    {
+      "file": "DownJacket_Purple.png",
+      "rarity": "Common"
+    },
+    {
+      "file": "DownJacket_Red.png",
+      "rarity": "Common"
+    },
+    {
+      "file": "Jacket_Blue.png",
+      "rarity": "Common"
+    },
+    {
+      "file": "Jacket_Brown.png",
+      "rarity": "Common"
+    },
+    {
+      "file": "Jacket_purple.png",
+      "rarity": "Common"
+    },
+    {
+      "file": "Jean_Green.png",
+      "rarity": "Common"
+    },
+    {
+      "file": "Jean_Jacket.png",
+      "rarity": "Common"
+    },
+    {
+      "file": "Jean_Pilot.png",
+      "rarity": "Common"
+    },
+    {
+      "file": "Kimono-Hi.png",
+      "rarity": "Common"
+    },
+    {
+      "file": "Kimono-Hikari.png",
+      "rarity": "Common"
+    },
+    {
+      "file": "Kimono_Blue.png",
+      "rarity": "Common"
+    },
+    {
+      "file": "Kimono_Brown.png",
+      "rarity": "Common"
+    },
+    {
+      "file": "Kimono_Mizu.png",
+      "rarity": "Common"
+    },
+    {
+      "file": "Kimono_Red.png",
+      "rarity": "Common"
+    },
+    {
+      "file": "Monk_Black.png",
+      "rarity": "Common"
+    },
+    {
+      "file": "Monk_Red.png",
+      "rarity": "Common"
+    },
+    {
+      "file": "Monk_White.png",
+      "rarity": "Common"
+    },
+    {
+      "file": "Office_Black.png",
+      "rarity": "Common"
+    },
+    {
+      "file": "Office_Blue.png",
+      "rarity": "Common"
+    },
+    {
+      "file": "Office_White.png",
+      "rarity": "Common"
+    },
+    {
+      "file": "Qipao_Black.png",
+      "rarity": "Common"
+    },
+    {
+      "file": "Qipao_Blue.png",
+      "rarity": "Common"
+    },
+    {
+      "file": "Qipao_Red.png",
+      "rarity": "Common"
+    },
+    {
+      "file": "ShirtVest_Black.png",
+      "rarity": "Common"
+    },
+    {
+      "file": "ShirtVest_Blue.png",
+      "rarity": "Common"
+    },
+    {
+      "file": "ShirtVest_White.png",
+      "rarity": "Common"
+    },
+    {
+      "file": "Suikan_Black.png",
+      "rarity": "Common"
+    },
+    {
+      "file": "Suikan_Blue.png",
+      "rarity": "Common"
+    },
+    {
+      "file": "Suikan_White.png",
+      "rarity": "Common"
+    },
+    {
+      "file": "Sweatshirt_Angry.png",
+      "rarity": "Common"
+    },
+    {
+      "file": "Sweatshirt_Goldsmile.png",
+      "rarity": "Common"
+    },
+    {
+      "file": "Sweatshirt_Itezie_Black.png",
+      "rarity": "Common"
+    },
+    {
+      "file": "Sweatshirt_Itezie_Red.png",
+      "rarity": "Common"
+    },
+    {
+      "file": "Sweatshirt_Katana.png",
+      "rarity": "Common"
+    },
+    {
+      "file": "Sweatshirt_White.png",
+      "rarity": "Common"
+    },
+    {
+      "file": "TshirtV2_Black.png",
+      "rarity": "Common"
+    },
+    {
+      "file": "TshirtV2_Brown.png",
+      "rarity": "Common"
+    },
+    {
+      "file": "TshirtV2_Yellow.png",
+      "rarity": "Common"
+    },
+    {
+      "file": "Tshirt_Black.png",
+      "rarity": "Common"
+    },
+    {
+      "file": "Tshirt_Green.png",
+      "rarity": "Common"
+    },
+    {
+      "file": "Tshirt_White.png",
+      "rarity": "Common"
+    },
+    {
+      "file": "Windbreaker_Black.png",
+      "rarity": "Common"
+    },
+    {
+      "file": "Windbreaker_Orange.png",
+      "rarity": "Common"
+    },
+    {
+      "file": "Windbreaker_Purple.png",
+      "rarity": "Common"
+    }
+  ],
+  "projects": [
+    {
+      "file": "hageshi-akuma-shirt.png",
+      "rarity": "Common"
+    },
+    {
+      "file": "irys-1.png",
+      "rarity": "Common"
+    },
+    {
+      "file": "irys-2.png",
+      "rarity": "Common"
+    },
+    {
+      "file": "irys-3.png",
+      "rarity": "Common"
+    }
   ]
 }

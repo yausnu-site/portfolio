@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NFT Конструктор — yausnu</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- 🔹 HEADER -->
+  <header class="site-header">
+    <div class="header-content">
+      <div>
+        <h1 class="logo">NFT Конструктор</h1>
+        <p class="subtitle">Собери своего уникального персонажа</p>
+      </div>
+      <nav class="header-nav">
+        <a href="index.html" class="back-link">← На главную</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- 🔹 ОСНОВНОЙ БЛОК -->
+  <main class="constructor">
+    <div class="constructor-container">
+      
+      <!-- Левая панель -->
+      <aside class="controls">
+        <button id="randomize" class="btn-primary" disabled title="Загружаю ассеты…">
+          🎲 Случайный персонаж
+        </button>
+
+        <h2>Элементы</h2>
+
+        <div class="form-group">
+          <label for="background">Фон</label>
+          <select id="background"></select>
+        </div>
+
+        <div class="form-group">
+          <label for="body">Тело</label>
+          <select id="body"></select>
+        </div>
+
+        <div class="form-group">
+          <label for="eyes">Глаза</label>
+          <select id="eyes"></select>
+        </div>
+
+        <div class="form-group">
+          <label for="head">Волосы</label>
+          <select id="head"></select>
+        </div>
+
+        <div class="form-group">
+          <label for="mouth">Рот</label>
+          <select id="mouth"></select>
+        </div>
+
+        <div class="form-group">
+          <label for="outfit">Одежда</label>
+          <select id="outfit"></select>
+        </div>
+
+        <div class="form-group">
+          <label for="offhand">В руке</label>
+          <select id="offhand"></select>
+        </div>
+
+        <h3>Аксессуары</h3>
+
+        <div class="form-group">
+          <label for="glasses">Очки</label>
+          <select id="glasses"></select>
+        </div>
+
+        <div class="form-group">
+          <label for="mouthAttr">Атрибуты рта</label>
+          <select id="mouthAttr"></select>
+        </div>
+
+        <div class="form-group">
+          <label for="earbuds">Наушники</label>
+          <select id="earbuds"></select>
+        </div>
+
+        <div class="form-group">
+          <label for="earring">Серьги</label>
+          <select id="earring"></select>
+        </div>
+
+        <button id="download" class="btn-secondary">⬇ Скачать персонажа</button>
+      </aside>
+
+      <!-- Канвас -->
+      <section class="canvas-container">
+        <canvas id="character" width="600" height="600"></canvas>
+        <p id="rarity-label" class="rarity-text"></p>
+      </section>
+    </div>
+  </main>
+
+  <!-- 🔹 FOOTER -->
+  <footer class="site-footer">
+    <p>© 2025 yausnu — digital artist</p>
+  </footer>
+
+  <!-- Скрипты -->
+  <script src="constructor-core.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
