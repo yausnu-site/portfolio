@@ -4,114 +4,125 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>yausnu — digital artist</title>
-  <link rel="stylesheet" href="style.css?v=1.0.1">
+  <link rel="stylesheet" href="style.css?v=1.0.2">
 </head>
 <body>
   <!-- ШАПКА -->
-  <header class="site-header">
-    <h1 class="logo">yausnu</h1>
-    <p class="subtitle">digital artist</p>
+  <header class="site-header section-bg">
+    <div class="section-content">
+      <h1 class="logo">yausnu</h1>
+      <p class="subtitle">digital artist</p>
+    </div>
   </header>
 
   <main>
     <!-- ОБО МНЕ -->
     <section class="about">
-      <h2>Обо Мне</h2>
-      <div class="about-content">
-        <img src="assets/profile.jpg" alt="yausnu" class="about-img" />
-        <div class="about-text">
-          <ul>
-            <li><strong>Иллюстрации</strong> <br><span>для Twitter / соцсетей</span></li>
-            <li><strong>Персонажи и стиль</strong> <br><span>для проектов Web3</span></li>
-            <li><strong>Арты</strong> <br><span>для рекламных кампаний</span></li>
-            <li><strong>NFT коллекции</strong> <br><span>от концепта до визуала</span></li>
+      <div class="section-content">
+        <h2>Обо Мне</h2>
+        <div class="about-content">
+          <div class="about-left">
+            <img src="images/profile.jpg" alt="yausnu" class="about-img" />
+            <p class="about-desc">
+              Я — Yausnu, художник. Создаю яркие и креативные иллюстрации в разных стилях.
+            </p>
+          </div>
+          <ul class="about-list">
+            <li><strong>Иллюстрации</strong><br><span>для Twitter / соцсетей</span></li>
+            <li><strong>Персонажи и стиль</strong><br><span>для проектов Web3</span></li>
+            <li><strong>Арты</strong><br><span>для рекламных кампаний</span></li>
+            <li><strong>NFT коллекции</strong><br><span>от концепта до визуала</span></li>
           </ul>
-          <p class="about-desc">
-            Я — Yausnu, художник. Создаю яркие и креативные иллюстрации в разных стилях.
-          </p>
         </div>
       </div>
     </section>
 
     <!-- ПРОЕКТ ХАГЕШИ АКУМА -->
-    <section class="project">
-      <h2>Хагеши Акума</h2>
-      <div class="project-content">
-        <p>
-          Ну вот и арт, а точнее, будущий принт для футболки. Жду комментарии.
-          Очень интересно узнать мнение сообщества — купили бы кофту с таким принтом?
-          Его имя — Хагеши Акума
-        </p>
-        <img src="assets/projects/hageshi-akuma-shirt.png" alt="Хагеши Акума" class="project-img" />
+    <section class="project section-bg">
+      <div class="section-content">
+        <h2>Хагеши Акума</h2>
+        <div class="project-content">
+          <p>
+            Ну вот и арт, а точнее, будущий принт для футболки. Жду комментарии.
+            Очень интересно узнать мнение сообщества — купили бы кофту с таким принтом?
+            Его имя — Хагеши Акума
+          </p>
+          <img src="images/projects/hageshi-akuma-shirt.png" alt="Хагеши Акума" class="project-img" />
+        </div>
       </div>
     </section>
 
     <!-- ПРОЕКТ IRYS -->
     <section class="project">
-      <h2>Irys</h2>
-      <p class="subtitle">маскот для компании Irys для постов в Twitter</p>
-      <div class="gallery">
-        <img src="assets/projects/irys-1.png" alt="Irys арт 1" />
-        <img src="assets/projects/irys-2.png" alt="Irys арт 2" />
-        <img src="assets/projects/irys-3.png" alt="Irys арт 3" />
+      <div class="section-content">
+        <h2>Irys</h2>
+        <p class="subtitle">маскот для компании Irys для постов в Twitter</p>
+        <div class="gallery">
+          <img src="images/projects/irys-1.png" alt="Irys арт 1" />
+          <img src="images/projects/irys-2.png" alt="Irys арт 2" />
+          <img src="images/projects/irys-3.png" alt="Irys арт 3" />
+        </div>
       </div>
     </section>
 
     <!-- NFT КОНСТРУКТОР -->
-    <section class="constructor-preview">
-      <h2>🎨 NFT Конструктор</h2>
-      <div class="mini-constructor">
-        <canvas id="miniCharacter" width="400" height="400"></canvas>
-        <p id="mini-rarity" class="rarity-text"></p>
-        <button id="mini-randomize">🎲 Случайный персонаж</button>
-        <a href="constructor.html" class="more-link">Открыть полный конструктор →</a>
+    <section class="constructor-preview section-bg">
+      <div class="section-content">
+        <h2>🎨 NFT Конструктор</h2>
+        <div class="mini-constructor">
+          <canvas id="miniCharacter" width="400" height="400"></canvas>
+          <p id="mini-rarity" class="rarity-text"></p>
+          <button id="mini-randomize">🎲 Случайный персонаж</button>
+          <a href="constructor.html" class="more-link">Открыть полный конструктор →</a>
+        </div>
       </div>
     </section>
   </main>
 
   <!-- ФУТЕР -->
   <footer class="site-footer">
-    <p>© 2025 yausnu. Все права защищены.</p>
-    <p>
-      <a href="https://t.me/yourhandle" target="_blank">Telegram</a> · 
-      <a href="https://twitter.com/yourhandle" target="_blank">Twitter</a>
-    </p>
+    <div class="section-content">
+      <p>© 2025 yausnu. Все права защищены.</p>
+      <p>
+        <a href="https://t.me/yausnu" target="_blank">telegram</a> · 
+        <a href="https://www.youtube.com/@yausnu" target="_blank">youtube</a>
+      </p>
+    </div>
   </footer>
 
   <!-- СКРИПТ ДЛЯ МИНИ-ГЕНЕРАТОРА -->
-<script src="constructor-core.js?v=1.0.1"></script>
-<script>
-  document.addEventListener("DOMContentLoaded", async () => {
-    const options = await loadOptions();
-    const canvas = document.getElementById("miniCharacter");
-    const ctx = canvas.getContext("2d");
-    const rarityLabel = document.getElementById("mini-rarity");
-    const button = document.getElementById("mini-randomize");
+  <script src="constructor-core.js?v=1.0.2"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", async () => {
+      const options = await loadOptions();
+      const canvas = document.getElementById("miniCharacter");
+      const ctx = canvas.getContext("2d");
+      const rarityLabel = document.getElementById("mini-rarity");
+      const button = document.getElementById("mini-randomize");
 
-    async function drawRandomCharacter() {
-      let current = {};
-      for (let cat of drawOrder) {
-  if (!options[cat] || options[cat].length === 0) continue;
-  current[cat] = weightedPickWithRarity(cat, options);
-}
+      async function drawRandomCharacter() {
+        let current = {};
+        for (let cat of drawOrder) {
+          if (!options[cat] || options[cat].length === 0) continue;
+          current[cat] = weightedPickWithRarity(cat, options);
+        }
 
-      await drawCharacterLayered(ctx, canvas, options, current);
+        await drawCharacterLayered(ctx, canvas, options, current);
 
-      const rarityName = calculateCharacterRarity(current, options);
-      const rarities = {
-        Common: "rarity-common",
-        Rare: "rarity-rare",
-        Epic: "rarity-epic",
-        Legendary: "rarity-legendary"
-      };
-      rarityLabel.className = "rarity-text " + rarities[rarityName];
-      rarityLabel.textContent = `Редкость: ${rarityName}`;
-    }
+        const rarityName = calculateCharacterRarity(current, options);
+        const rarities = {
+          Common: "rarity-common",
+          Rare: "rarity-rare",
+          Epic: "rarity-epic",
+          Legendary: "rarity-legendary"
+        };
+        rarityLabel.className = "rarity-text " + rarities[rarityName];
+        rarityLabel.textContent = `Редкость: ${rarityName}`;
+      }
 
-    button.addEventListener("click", drawRandomCharacter);
-    drawRandomCharacter();
-  });
-</script>
-
+      button.addEventListener("click", drawRandomCharacter);
+      drawRandomCharacter();
+    });
+  </script>
 </body>
 </html>
