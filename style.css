@@ -41,15 +41,14 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 220px; /* можно регулировать высоту */
+  height: 220px;
 }
 
-/* Логотип как единый блок */
 .logo-block {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 6px; /* расстояние между строками */
+  gap: 6px;
 }
 
 .logo {
@@ -64,7 +63,8 @@ body {
   font-size: 16px;
   font-weight: 400;
   color: var(--text-muted);
-  text-align: center;}
+  text-align: center;
+}
 
 /* ===== ОСНОВНОЙ КОНТЕНТ ===== */
 main {
@@ -79,9 +79,7 @@ section {
   margin-bottom: 60px;
   border-bottom: 1px solid #eee;
 }
-section:last-child {
-  border-bottom: none;
-}
+section:last-child { border-bottom: none; }
 
 /* ===== ТИПОГРАФИКА ===== */
 h1 { font-size: 36px; font-weight: 600; text-align: center; margin-bottom: 20px; }
@@ -100,7 +98,7 @@ h3 { font-size: 18px; font-weight: 500; margin: 15px 0 10px; }
 .about-left {
   display: flex;
   flex-direction: column;
-  align-items: flex-start; /* текст привязывается к левому краю изображения */
+  align-items: flex-start;
 }
 
 .about-img { 
@@ -128,7 +126,6 @@ h3 { font-size: 18px; font-weight: 500; margin: 15px 0 10px; }
 .about-list li strong { font-weight: 500; }
 .about-list li span { display: block; color: var(--text-muted); }
 
-
 /* ===== ПРОЕКТЫ ===== */
 .project-content { 
   display: flex; 
@@ -152,10 +149,8 @@ h3 { font-size: 18px; font-weight: 500; margin: 15px 0 10px; }
   object-fit: cover; 
 }
 
-/* ===== КОНСТРУКТОР ===== */
-.constructor-preview {
-  text-align: center;
-}
+/* ===== МИНИ-КОНСТРУКТОР НА ГЛАВНОЙ ===== */
+.constructor-preview { text-align: center; }
 .mini-constructor {
   display: flex;
   flex-direction: column;
@@ -175,7 +170,83 @@ button, .more-link {
   transition: background var(--transition), color var(--transition);
 }
 button:hover, .more-link:hover { background: #000; color: #fff; }
+button:disabled { opacity: 0.5; cursor: not-allowed; }
 .rarity-text { font-size: 14px; color: var(--text-muted); }
+
+/* ===== ПОЛНЫЙ КОНСТРУКТОР ===== */
+.constructor-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  justify-content: center;
+  align-items: flex-start;
+  margin-top: 40px;
+}
+
+/* Левая панель */
+.controls {
+  flex: 0 0 280px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  background: #fff;
+}
+
+.controls h2,
+.controls h3 {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: var(--text);
+  text-align: left;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+label {
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+select {
+  width: 100%;
+  padding: 8px;
+  font-size: 14px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  background: #fff;
+  color: var(--text);
+  transition: border-color var(--transition);
+}
+select:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+/* Канвас */
+.canvas-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+#character {
+  width: 480px;   /* видимый размер */
+  height: 480px;
+  max-width: 100%;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  background: #fff;
+}
 
 /* ===== ФУТЕР ===== */
 .site-footer { 
@@ -189,9 +260,12 @@ button:hover, .more-link:hover { background: #000; color: #fff; }
 /* ===== АДАПТИВ ===== */
 @media (max-width: 768px) {
   .about-content { flex-direction: column; align-items: center; gap: 20px; }
-  .about-img { width: 140px; height: 140px; }
+  .about-img { width: 140px; height: auto; }
   .site-header { height: 150px; }
   .logo { font-size: 48px; }
   .logo-subtitle { font-size: 14px; }
   .project-img { max-width: 100%; }
+  .constructor-container { flex-direction: column; align-items: center; }
+  .controls { width: 100%; }
+  #character { width: 320px; height: 320px; }
 }
