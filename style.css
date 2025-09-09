@@ -277,12 +277,12 @@ select:focus {
   .logo-subtitle { font-size: 14px; }
   .project-img { max-width: 100%; }
   .constructor-container { flex-direction: column; align-items: center; }
-  {
+
   #miniCharacter {
     width: 280px !important;   /* 🔹 уменьшаем размер */
     height: 280px !important;
   }
-}
+
   .controls { width: 100%; }
   #character { width: 320px; height: 320px; }
 }
