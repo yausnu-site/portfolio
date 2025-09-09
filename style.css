@@ -151,11 +151,22 @@ h3 { font-size: 18px; font-weight: 500; margin: 15px 0 10px; }
 
 /* ===== МИНИ-КОНСТРУКТОР НА ГЛАВНОЙ ===== */
 .constructor-preview { text-align: center; }
+
 .mini-constructor {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 15px;
+  padding: 0 16px; /* 🔹 добавляем отступы слева/справа */
+  box-sizing: border-box;
+}
+
+#miniCharacter {
+  max-width: 100%;
+  height: auto;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  background: #fff;
 }
 button, .more-link {
   padding: 10px 18px; 
@@ -266,6 +277,12 @@ select:focus {
   .logo-subtitle { font-size: 14px; }
   .project-img { max-width: 100%; }
   .constructor-container { flex-direction: column; align-items: center; }
+  {
+  #miniCharacter {
+    width: 280px !important;   /* 🔹 уменьшаем размер */
+    height: 280px !important;
+  }
+}
   .controls { width: 100%; }
   #character { width: 320px; height: 320px; }
 }
