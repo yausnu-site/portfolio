@@ -270,19 +270,55 @@ select:focus {
 
 /* ===== АДАПТИВ ===== */
 @media (max-width: 768px) {
-  .about-content { flex-direction: column; align-items: center; gap: 20px; }
-  .about-img { width: 140px; height: auto; }
-  .site-header { height: 150px; }
-  .logo { font-size: 48px; }
-  .logo-subtitle { font-size: 14px; }
-  .project-img { max-width: 100%; }
-  .constructor-container { flex-direction: column; align-items: center; }
+  .about-content { 
+    flex-direction: column; 
+    align-items: center; 
+    gap: 20px; 
+  }
+
+  .about-img { 
+    width: 140px; 
+    height: auto; 
+  }
+
+  .site-header { 
+    height: 150px; 
+  }
+
+  .logo { 
+    font-size: 48px; 
+  }
+
+  .logo-subtitle { 
+    font-size: 14px; 
+  }
+
+  .project-img { 
+    max-width: 100%; 
+  }
+
+  .constructor-container { 
+    flex-direction: column; 
+    align-items: center; 
+  }
+
+  /* 🔹 канвас наверх */
+  .canvas-container {
+    order: -1; 
+    margin-bottom: 20px;
+  }
 
   #miniCharacter {
     width: 280px !important;   /* 🔹 уменьшаем размер */
     height: 280px !important;
   }
 
-  .controls { width: 100%; }
-  #character { width: 320px; height: 320px; }
+  .controls { 
+    width: 100%; 
+  }
+
+  #character { 
+    width: 320px; 
+    height: 320px; 
+  }
 }
