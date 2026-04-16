@@ -1,0 +1,416 @@
+.gallery {
+  min-height: 100vh;
+  padding-block: 80px;
+  overflow: hidden;
+
+  &__inner {
+    display: grid;
+    grid-template-columns: 420px 1fr;
+    gap: 60px;
+    align-items: center;
+    min-height: calc(100vh - 160px);
+
+    @media (max-width: 1024px) {
+      grid-template-columns: 360px 1fr;
+      gap: 40px;
+    }
+
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr;
+      min-height: auto;
+    }
+  }
+
+  &__sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__item {
+    &.is-active {
+      .gallery__trigger {
+        opacity: 1;
+        transform: translateX(12px);
+      }
+
+      .gallery__name {
+        color: #d0f;
+      }
+
+      .gallery__index,
+      .gallery__count {
+        opacity: 1;
+      }
+    }
+  }
+
+  &__trigger {
+    width: 100%;
+    padding: 24px 24px;
+
+    display: grid;
+    grid-template-columns: 50px 1fr auto;
+    align-items: center;
+    gap: 20px;
+
+    background: transparent;
+    border: none;
+    text-align: left;
+    cursor: pointer;
+
+    opacity: .55;
+
+    transition:
+      opacity .35s ease,
+      transform .35s ease;
+
+    &:hover {
+      opacity: 1;
+      transform: translateX(12px);
+    }
+  }
+
+  &__index,
+  &__count {
+    text-transform: uppercase;
+    opacity: .5;
+    transition: opacity .3s ease;
+  }
+
+  &__name {
+    font-size: clamp(20px, 2vw, 32px);
+    color: black;
+    transition: color .3s ease;
+  }
+
+  &__preview {
+    position: relative;
+    height: min(78vh, 820px);
+    border-radius: 28px;
+    overflow: hidden;
+
+    @media (max-width: 768px) {
+      order: -1;
+      height: 70vh;
+    }
+  }
+
+  &__preview-item {
+    position: absolute;
+    inset: 0;
+
+    opacity: 0;
+    visibility: hidden;
+    transform: scale(1.06);
+
+    cursor: zoom-in;
+
+    transition:
+      opacity .6s ease,
+      transform .8s ease,
+      visibility .6s ease;
+
+    &.is-active {
+      opacity: 1;
+      visibility: visible;
+      transform: scale(1);
+      z-index: 2;
+    }
+
+    &:hover {
+      &::before {
+        opacity: 1;
+      }
+    }
+
+    &::before {
+      content: "Открыть проект";
+      position: absolute;
+      inset: 0;
+      z-index: 3;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      font-size: 18px;
+      color: white;
+
+      opacity: 0;
+      transition: opacity .3s ease;
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+
+      background: linear-gradient(
+          to top,
+          rgba(0,0,0,.35),
+          rgba(0,0,0,.05)
+      );
+
+      pointer-events: none;
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+    }
+  }
+
+  @media (max-width: 768px) {
+    padding-block: 40px;
+
+    &__sidebar {
+      gap: 24px;
+    }
+
+    &__trigger {
+      grid-template-columns: 40px 1fr auto;
+      gap: 12px;
+    }
+
+    &__name {
+      font-size: 18px;
+    }
+  }
+}
+
+
+/* =========================
+   MODAL
+========================= */
+
+.modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+
+  transition:
+    opacity .45s ease,
+    visibility .45s ease;
+
+  &.is-open {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+  }
+
+  &__overlay {
+    position: absolute;
+    inset: 0;
+
+    background: rgba(0,0,0,.88);
+    backdrop-filter: blur(10px);
+  }
+
+  &__body {
+    position: relative;
+    z-index: 2;
+
+    width: min(90vw, 1200px);
+    height: min(90vh, 900px);
+
+    margin: auto;
+    top: 50%;
+
+    opacity: 0;
+    transform: translateY(40px) scale(.96);
+
+    transition:
+      opacity .45s ease,
+      transform .45s ease;
+  }
+
+  &.is-open &__body {
+    opacity: 1;
+    transform: translateY(-50%) scale(1);
+  }
+
+  &__content {
+    width: 100%;
+    height: 100%;
+
+    overflow: hidden;
+    border-radius: 24px;
+
+    position: relative;
+    background: #111;
+
+    touch-action: pan-y;
+    cursor: grab;
+
+    &:active {
+      cursor: grabbing;
+    }
+  }
+
+  &__track {
+    display: flex;
+    height: 100%;
+    will-change: transform;
+  }
+
+  &__slide {
+    flex: 0 0 100%;
+    height: 100%;
+    user-select: none;
+
+    img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: contain;
+      pointer-events: none;
+      background: #111;
+    }
+  }
+
+  &__close {
+    position: absolute;
+    top: -54px;
+    right: 0;
+    z-index: 5;
+
+    width: 44px;
+    height: 44px;
+
+    border: none;
+    background: transparent;
+
+    font-size: 42px;
+    line-height: 1;
+    color: white;
+
+    cursor: pointer;
+
+    transition:
+      transform .25s ease,
+      opacity .25s ease;
+
+    &:hover {
+      transform: scale(1.15);
+    }
+  }
+
+  &__nav {
+    position: absolute;
+    top: 50%;
+    z-index: 5;
+
+    width: 56px;
+    height: 56px;
+
+    border: none;
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 28px;
+    line-height: 1;
+
+    color: white;
+    background: rgba(255,255,255,.12);
+    backdrop-filter: blur(10px);
+
+    cursor: pointer;
+
+    transform: translateY(-50%);
+
+    transition:
+      transform .25s ease,
+      background .25s ease,
+      opacity .25s ease;
+
+    &:hover {
+      transform: translateY(-50%) scale(1.08);
+      background: rgba(255,255,255,.18);
+    }
+
+    &--prev {
+      left: -80px;
+    }
+
+    &--next {
+      right: -80px;
+    }
+  }
+
+  &__counter {
+    position: absolute;
+    bottom: -46px;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    color: white;
+    font-size: 14px;
+    letter-spacing: .08em;
+  }
+
+  @media (max-width: 1024px) {
+    &__nav {
+      &--prev {
+        left: 12px;
+      }
+
+      &--next {
+        right: 12px;
+      }
+    }
+  }
+
+  @media (max-width: 768px) {
+    &__body {
+      width: 100vw;
+      height: 100vh;
+      border-radius: 0;
+    }
+
+    &.is-open &__body {
+      transform: translateY(-50%) scale(1);
+    }
+
+    &__content {
+      border-radius: 0;
+    }
+
+    &__close {
+      top: 18px;
+      right: 18px;
+    }
+
+    &__nav {
+      width: 46px;
+      height: 46px;
+
+      &--prev {
+        left: 12px;
+      }
+
+      &--next {
+        right: 12px;
+      }
+    }
+
+    &__counter {
+      bottom: 18px;
+    }
+  }
+}

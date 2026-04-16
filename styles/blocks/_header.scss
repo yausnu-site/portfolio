@@ -1,0 +1,56 @@
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+
+  &__inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: var(--header-height);
+    gap: 30px;
+
+    @include mobile {
+      justify-content: center;
+      padding-top: clamp(20px, 3vw, 30px);
+    }
+  }
+
+  &__menu {
+    margin-left: auto;
+    font-size: 20px;
+
+    &-list {
+      display: flex;
+      align-items: center;
+      column-gap: 40px;
+    }
+
+    &-link {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      height: 48px;
+
+      @include hover {
+        &::after {
+          width: 80%;
+        }
+      }
+
+      &::after {
+        content: '';
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        translate: -50%;
+        width: 0;
+        height: 2px;
+        background-color: currentColor;
+        transition: inherit;
+      }
+    }
+  }
+}

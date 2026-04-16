@@ -1,0 +1,91 @@
+.comic-slider {
+  padding: 60px 0;
+
+  &__container {
+    width: clamp(40px, 80vh, 900px);
+    max-width: 100%;
+    margin: 0 auto;
+  }
+
+  &__header {
+    text-align: center;
+  }
+
+
+  &__subtitle {
+    opacity: 0.6;
+  }
+
+  &__body {
+    overflow: hidden;
+    position: relative;
+  }
+
+  &__track {
+    display: flex;
+    will-change: transform;
+  }
+
+  &__slide {
+    min-width: 100%;
+    flex-shrink: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    img {
+      width: 100%;
+      max-width: 500px;
+      height: auto;
+      border-radius: 8px;
+      background: white;
+      user-select: none;
+      pointer-events: none;
+    }
+  }
+
+  &__controls {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    margin-top: 20px;
+  }
+
+  &__btn {
+    cursor: pointer;
+    transition: 0.3s;
+
+    &:disabled {
+      opacity: 0.3;
+      cursor: default;
+    }
+  }
+
+  &__dots {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 10px;
+  }
+
+  &__dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--color-gray-alt);
+    cursor: pointer;
+    transition: 0.3s;
+
+    &.active {
+      background: var(--color-dark);
+      transform: scale(1.5);
+    }
+  }
+}
+.comic-slider__track {
+  cursor: grab;
+}
+
+.comic-slider__slide img {
+  pointer-events: none;
+}

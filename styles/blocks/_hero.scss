@@ -1,0 +1,95 @@
+.hero {
+  min-height: 100vh;
+
+  &__body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    min-height: 100%;
+    @include mobile {
+      padding-top: 20px;
+      flex-direction: column;
+      justify-content: center;
+    }
+  }
+
+  &__content {
+    flex:1;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    align-items: start;
+
+    @include mobile {
+      width: 80%;
+      padding-inline: 20px;
+      flex: 0 0 20vh;
+      text-align: center;
+      align-items: center;
+    }
+  }
+
+  &__text {
+    position: relative;
+    width: 100%;
+    max-width: 400px;
+    height: 300px;
+
+    @include mobile {
+
+      min-height: 200px;
+    }
+
+    &-item {
+      position: absolute;
+      width: 100%;
+    }
+  }
+
+  &__button {
+    margin-top: auto;
+    height: var(--button-height);
+  }
+
+  &__media {
+    flex:1;
+    height: 80vh;
+    @include mobile {
+      position: relative;
+      width: 100%;
+      top: 0;
+
+      flex: 0 0 clamp(300px, 60vh, 600px);
+    }
+
+    &-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      @include flex-center()
+    }
+
+    &-item {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+
+      img {
+        height: 100%;
+        width: 100%;
+        object-fit: contain;
+        margin-left: auto;
+        @include mobile {
+          margin-inline: auto;
+          width: 80%;
+        }
+      }
+    }
+  }
+}
+
+.hero__text-item:first-child, .hero__media-item:first-child {
+  opacity: 1;
+}

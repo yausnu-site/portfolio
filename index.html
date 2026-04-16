@@ -1,0 +1,304 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta
+    name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+  >
+  <meta
+    http-equiv="X-UA-Compatible"
+    content="ie=edge"
+  >
+  <link
+    rel="stylesheet"
+    href="/styles/styles.css"
+  >
+  <title>Document</title>
+</head>
+<body>
+
+
+<header class="header">
+  <div class="header__inner container">
+    <a
+      class="header__logo logo"
+      href="/"
+    >
+      <img
+        src="/images/YAUSNU.svg"
+        alt=""
+        width="150"
+        height="25"
+      >
+    </a>
+    <nav class="header__menu hidden-mobile">
+      <ul class="header__menu-list">
+        <li class="header__menu-item">
+          <a
+            class="header__menu-link"
+            href="#works"
+          >Работы
+          </a>
+        </li>
+        <li class="header__menu-item">
+          <a
+            class="header__menu-link"
+            href="/"
+          >Конструктор
+          </a>
+        </li>
+        <li class="header__menu-item">
+          <a
+            class="header__menu-link"
+            href="/"
+          >Контакты
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main class="content">
+  <section class="section container">
+    <div class="section__body">
+      <div class="hero">
+        <div class="hero__body">
+          <div class="hero__content">
+            <div class="hero__text">
+              <div
+                class="hero__text-item"
+                data-index="0"
+              >
+                <h2>Каракули для продукта и бренда</h2>
+                <p>Рисую NFT-коллекции, мерч, иллюстрации для веба или печати
+                  От концепта до готового файла
+              </div>
+              <div
+                class="hero__text-item"
+                data-index="1"
+              >
+                <h2>Для бизнеса</h2>
+                <p>Понимаю задачи маркетинга и брендинга
+                  Работы не просто красивые - они решают ваши задачи
+                </p>
+              </div>
+              <div
+                class="hero__text-item"
+                data-index="2"
+              >
+                <h2>Технически безупречно</h2>
+                <p>Готовлю файлы под ваш запрос: Кошелёк MetaMask, Типография, Лендинг</p>
+              </div>
+              <div
+                class="hero__text-item"
+                data-index="3"
+              >
+                <h2>Чёткие Сроки</h2>
+                <p>Прозрачность на всех этапах, результат точно в срок</p>
+              </div>
+            </div>
+            <button
+              class="hero__button button hidden-mobile"
+              type="button"
+            >
+              обсудить проект
+            </button>
+          </div>
+          <div class="hero__media">
+            <div class="hero__media-inner">
+              <div
+                class="hero__media-item"
+                data-index="0"
+              >
+                <img
+                  src="/images/art1.png"
+                  alt=""
+                >
+              </div>
+              <div
+                class="hero__media-item"
+                data-index="1"
+              >
+                <img
+                  src="/images/art2.png"
+                  alt=""
+                >
+              </div>
+              <div
+                class="hero__media-item"
+                data-index="2"
+              >
+                <img
+                  src="/images/art3.png"
+                  alt=""
+                >
+              </div>
+              <div
+                class="hero__media-item"
+                data-index="3"
+              >
+                <img
+                  src="/images/art4.png"
+                  alt=""
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section container">
+    <section class="gallery">
+      <div class="gallery__inner">
+        <div class="gallery__sidebar">
+          <h2 class="gallery__title">Проекты</h2>
+          <ul class="gallery__list">
+            <li class="gallery__item is-active" data-gallery="1">
+              <button class="gallery__trigger" type="button">
+                <span class="gallery__index">2025</span>
+                <span class="gallery__name">Gensyn</span>
+                <span class="gallery__count">Разработка маскота</span>
+              </button>
+            </li>
+            <li class="gallery__item" data-gallery="2">
+              <button class="gallery__trigger" type="button">
+                <span class="gallery__index">2025</span>
+                <span class="gallery__name">Borpa</span>
+                <span class="gallery__count">Разработка маскота</span>
+              </button>
+            </li>
+            <li class="gallery__item" data-gallery="3">
+              <button class="gallery__trigger" type="button">
+                <span class="gallery__index">2025</span>
+                <span class="gallery__name">Symbiotic</span>
+                <span class="gallery__count">Разработка маскота</span>
+              </button>
+            </li>
+          </ul>
+        </div>
+        <div class="gallery__preview">
+          <article class="gallery__preview-item is-active" data-gallery="1">
+            <img src="images/gensyn/1.jpg" alt="">
+          </article>
+          <article class="gallery__preview-item" data-gallery="2">
+            <img src="images/borpa/1.jpg" alt="">
+          </article>
+          <article class="gallery__preview-item" data-gallery="3">
+            <img src="images/symbiotic/1.jpg" alt="">
+          </article>
+        </div>
+      </div>
+    </section>
+    <div class="modal" id="galleryModal">
+      <div class="modal__overlay"></div>
+
+      <div class="modal__body">
+
+        <button class="modal__close" type="button" aria-label="Закрыть">
+          ×
+        </button>
+
+        <button
+          class="modal__nav modal__nav--prev"
+          type="button"
+          aria-label="Предыдущий слайд"
+        >
+          ‹
+        </button>
+
+        <div class="modal__content">
+
+          <!-- свайп контейнер -->
+          <div class="modal__track">
+
+            <!-- JS вставляет сюда -->
+            <!--
+            <div class="modal__slide">
+              <img src="..." alt="">
+            </div>
+            -->
+
+          </div>
+
+        </div>
+
+        <button
+          class="modal__nav modal__nav--next"
+          type="button"
+          aria-label="Следующий слайд"
+        >
+          ›
+        </button>
+
+        <div class="modal__counter">
+          <span class="modal__current">1</span>
+          /
+          <span class="modal__total">1</span>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="section container">
+    <div class="comic-slider">
+      <div class="comic-slider__container" id="works">
+
+        <div class="comic-slider__header">
+          <h2 class="comic-slider__title">RE</h2>
+          <p class="comic-slider__subtitle">Одна из моих работ это комикс</p>
+        </div>
+
+        <div class="comic-slider__body">
+          <div class="comic-slider__track">
+
+            <div class="comic-slider__slide"><img src="images/comic/1.jpg"></div>
+            <div class="comic-slider__slide"><img src="images/comic/2.jpg"></div>
+            <div class="comic-slider__slide"><img src="images/comic/3.jpg"></div>
+            <div class="comic-slider__slide"><img src="images/comic/4.jpg"></div>
+            <div class="comic-slider__slide"><img src="images/comic/5.jpg"></div>
+            <div class="comic-slider__slide"><img src="images/comic/6.jpg"></div>
+            <div class="comic-slider__slide"><img src="images/comic/7.jpg"></div>
+            <div class="comic-slider__slide"><img src="images/comic/8.jpg"></div>
+            <div class="comic-slider__slide"><img src="images/comic/9.jpg"></div>
+            <div class="comic-slider__slide"><img src="images/comic/10.jpg"></div>
+            <div class="comic-slider__slide"><img src="images/comic/11.jpg"></div>
+            <div class="comic-slider__slide"><img src="images/comic/12.jpg"></div>
+            <div class="comic-slider__slide"><img src="images/comic/13.jpg"></div>
+
+          </div>
+        </div>
+
+        <div class="comic-slider__dots"></div>
+
+        <div class="comic-slider__controls">
+          <button class="comic-slider__btn comic-slider__btn--prev button">←</button>
+          <button class="comic-slider__btn comic-slider__btn--next button">→</button>
+        </div>
+
+
+      </div>
+    </div>
+  </section>
+
+</main>
+
+
+
+
+
+
+
+<script src="https://unpkg.com/gsap@3/dist/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/Draggable.min.js"></script>
+<script src="https://unpkg.com/gsap@3/dist/ScrollTrigger.min.js"></script>
+<script src="/hero.js"></script>
+<script src="/comic.js"></script>
+<script src="/gallery.js"></script>
+
+</body>
+</html>

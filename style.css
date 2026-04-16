@@ -1,0 +1,324 @@
+/* ===== ПОДКЛЮЧЕНИЕ ШРИФТОВ ===== */
+@font-face {
+  font-family: 'Geologica';
+  src: url('./fonts/Geologica-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Geologica';
+  src: url('./fonts/Geologica-SemiBold.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ===== ПЕРЕМЕННЫЕ ===== */
+:root {
+  --bg: #fff;
+  --text: #000;
+  --text-muted: rgba(0, 0, 0, 0.55);
+  --accent: #000;
+  --transition: 0.25s ease;
+}
+
+/* ===== СБРОС ===== */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: 'Geologica', system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  line-height: 1.6;
+  font-size: 16px;
+}
+
+/* ===== ХЕДЕР ===== */
+.site-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 220px;
+}
+
+.logo-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.logo {
+  font-size: 80px;
+  font-weight: 600;
+  color: var(--accent);
+  line-height: 1;
+  text-align: center;
+}
+
+.logo-subtitle {
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--text-muted);
+  text-align: center;
+}
+
+/* ===== ОСНОВНОЙ КОНТЕНТ ===== */
+main {
+  flex: 1;
+  padding: 40px 20px;
+  max-width: 1000px;
+  margin: 0 auto;
+  width: 100%;
+}
+section {
+  padding: 40px 0;
+  margin-bottom: 60px;
+  border-bottom: 1px solid #eee;
+}
+section:last-child { border-bottom: none; }
+
+/* ===== ТИПОГРАФИКА ===== */
+h1 { font-size: 36px; font-weight: 600; text-align: center; margin-bottom: 20px; }
+h2 { font-size: 28px; font-weight: 600; text-align: center; margin-bottom: 20px; }
+h3 { font-size: 18px; font-weight: 500; margin: 15px 0 10px; }
+.text-muted { color: var(--text-muted); font-size: 14px; }
+
+/* ===== ОБО МНЕ ===== */
+.about-content {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 60px;
+}
+
+.about-left {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.about-img { 
+  width: 240px; 
+  height: auto; 
+  object-fit: cover; 
+}
+
+.about-desc {
+  margin-top: 15px;
+  max-width: 240px;
+  text-align: left;
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+.about-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  font-size: 14px;
+}
+
+.about-list li strong { font-weight: 500; }
+.about-list li span { display: block; color: var(--text-muted); }
+
+/* ===== ПРОЕКТЫ ===== */
+.project-content { 
+  display: flex; 
+  flex-direction: column; 
+  gap: 20px; 
+  align-items: center; 
+}
+.project-img { 
+  width: 100%; 
+  max-width: 500px; 
+  height: auto; 
+}
+.gallery { 
+  display: grid; 
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+  gap: 20px; 
+}
+.gallery img { 
+  width: 100%; 
+  height: auto; 
+  object-fit: cover; 
+}
+
+/* ===== МИНИ-КОНСТРУКТОР НА ГЛАВНОЙ ===== */
+.constructor-preview { text-align: center; }
+
+.mini-constructor {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  padding: 0 16px; /* 🔹 добавляем отступы слева/справа */
+  box-sizing: border-box;
+}
+
+#miniCharacter {
+  max-width: 100%;
+  height: auto;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  background: #fff;
+}
+button, .more-link {
+  padding: 10px 18px; 
+  font-size: 0.95rem; 
+  font-weight: 500; 
+  cursor: pointer; 
+  text-decoration: none;
+  text-align: center; 
+  background: none; 
+  border: 1px solid #ddd; 
+  border-radius: 6px;
+  transition: background var(--transition), color var(--transition);
+}
+button:hover, .more-link:hover { background: #000; color: #fff; }
+button:disabled { opacity: 0.5; cursor: not-allowed; }
+.rarity-text { font-size: 14px; color: var(--text-muted); }
+
+/* ===== ПОЛНЫЙ КОНСТРУКТОР ===== */
+.constructor-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  justify-content: center;
+  align-items: flex-start;
+  margin-top: 40px;
+}
+
+/* Левая панель */
+.controls {
+  flex: 0 0 280px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  background: #fff;
+}
+
+.controls h2,
+.controls h3 {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: var(--text);
+  text-align: left;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+label {
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+select {
+  width: 100%;
+  padding: 8px;
+  font-size: 14px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  background: #fff;
+  color: var(--text);
+  transition: border-color var(--transition);
+}
+select:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+/* Канвас */
+.canvas-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+#character {
+  width: 480px;   /* видимый размер */
+  height: 480px;
+  max-width: 100%;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  background: #fff;
+}
+
+/* ===== ФУТЕР ===== */
+.site-footer { 
+  padding: 20px; 
+  text-align: center; 
+  font-size: 13px; 
+  color: var(--text-muted); 
+  border-top: 1px solid #eee; 
+}
+
+/* ===== АДАПТИВ ===== */
+@media (max-width: 768px) {
+  .about-content { 
+    flex-direction: column; 
+    align-items: center; 
+    gap: 20px; 
+  }
+
+  .about-img { 
+    width: 140px; 
+    height: auto; 
+  }
+
+  .site-header { 
+    height: 150px; 
+  }
+
+  .logo { 
+    font-size: 48px; 
+  }
+
+  .logo-subtitle { 
+    font-size: 14px; 
+  }
+
+  .project-img { 
+    max-width: 100%; 
+  }
+
+  .constructor-container { 
+    flex-direction: column; 
+    align-items: center; 
+  }
+
+  /* 🔹 канвас наверх */
+  .canvas-container {
+    order: -1; 
+    margin-bottom: 20px;
+  }
+
+  #miniCharacter {
+    width: 280px !important;   /* 🔹 уменьшаем размер */
+    height: 280px !important;
+  }
+
+  .controls { 
+    width: 100%; 
+  }
+
+  #character { 
+    width: 320px; 
+    height: 320px; 
+  }
+}

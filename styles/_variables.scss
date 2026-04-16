@@ -1,0 +1,22 @@
+:root {
+  --color-dark: #222222;
+  --color-light: #ffffff;
+  --color-accent: #b9ff66;
+  --color-gray: #f6f6f6;
+  --color-gray-alt: #999;
+
+  --border: 1px solid var(--color-dark);
+  --border-radius-m: 14px;
+  --border-radius-s: 40px;
+  --border-radius-l: 8px;
+
+  --font-family-base: 'Geologica', sans-serif;
+
+  --container-width: 1240px;
+  --container-padding-x: clamp(16px, 4vw, 64px);
+  --button-height: 68px;
+  --transition-duration: 0.2s;
+
+  --header-height: 100px
+
+}
